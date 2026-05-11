@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About BZM Enterprise Inc. — a small Edmonton general contractor focused on custom small homes, renovations, and commercial fit-ups. Learn how we work and what we stand for.">
+  <meta name="keywords" content="about BZM Enterprise, Edmonton general contractor, custom home builder Alberta, contractor process">
+  <meta name="author" content="BZM Enterprise Inc.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About BZM Enterprise — A small team, a high standard.">
+  <meta property="og:description" content="Edmonton general contractor specializing in custom small homes, renovations, and commercial leasehold improvements.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/about-story.jpeg">
+
+  <title>About — BZM Enterprise Inc. | Edmonton General Contractor</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       GLOBAL RESET + DESIGN TOKENS
+       ========================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bzm-ink: #1a1d1a;
+      --bzm-paper: #f4f1ec;
+      --bzm-cream: #ebe5db;
+      --bzm-rust: #b5532a;
+      --bzm-rust-deep: #8a3d1c;
+      --bzm-line: #d6cfc2;
+      --bzm-line-dark: rgba(244, 241, 236, 0.14);
+      --bzm-line-dark-strong: rgba(244, 241, 236, 0.28);
+      --bzm-muted: #6b675f;
+      --bzm-muted-dark: #9a958c;
+      --bzm-display: 'Fraunces', 'Playfair Display', Georgia, serif;
+      --bzm-body: 'Inter Tight', 'Helvetica Neue', sans-serif;
+      --bzm-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--bzm-body);
+      background: var(--bzm-paper);
+      color: var(--bzm-ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ==========================================================
+       HEADER / NAV (shared across all pages)
+       ========================================================== */
+    .bzm-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bzm-paper);
+      border-bottom: 1px solid var(--bzm-line);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .bzm-header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .bzm-logo {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: -0.015em;
+      line-height: 1;
+      color: var(--bzm-ink);
+      flex-shrink: 0;
+    }
+    .bzm-logo em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-logo small {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+    .bzm-nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .bzm-nav a {
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--bzm-ink);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .bzm-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--bzm-rust);
+      transition: width 0.25s ease;
+    }
+    .bzm-nav a:hover { color: var(--bzm-rust); }
+    .bzm-nav a:hover::after { width: 100%; }
+    .bzm-nav a.active { color: var(--bzm-rust); }
+    .bzm-nav a.active::after { width: 100%; }
+    .bzm-nav-dropdown { position: relative; }
+    .bzm-nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: -16px;
+      background: var(--bzm-paper);
+      border: 1px solid var(--bzm-line);
+      padding: 12px 0;
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+    .bzm-nav-dropdown:hover .bzm-nav-dropdown-menu,
+    .bzm-nav-dropdown:focus-within .bzm-nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .bzm-nav-dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .bzm-nav-dropdown-menu a::after { display: none; }
+    .bzm-nav-dropdown-menu a:hover {
+      background: var(--bzm-cream);
+      color: var(--bzm-rust);
+    }
+    .bzm-nav-dropdown > a::before {
+      content: '+';
+      display: inline-block;
+      margin-right: 4px;
+      color: var(--bzm-rust);
+      transition: transform 0.25s ease;
+    }
+    .bzm-nav-dropdown:hover > a::before { transform: rotate(45deg); }
+    .bzm-header-cta {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 12px 22px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.25s ease, transform 0.25s ease;
+      border: none;
+    }
+    .bzm-header-cta:hover {
+      background: var(--bzm-rust);
+      transform: translateY(-1px);
+    }
+    .bzm-mobile-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+      position: relative;
+      cursor: pointer;
+    }
+    .bzm-mobile-toggle span {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--bzm-ink);
+      transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+    }
+    .bzm-mobile-toggle span:nth-child(1) { top: 8px; }
+    .bzm-mobile-toggle span:nth-child(2) { top: 15px; }
+    .bzm-mobile-toggle span:nth-child(3) { top: 22px; }
+    .bzm-mobile-toggle.active span:nth-child(1) { top: 15px; transform: rotate(45deg); }
+    .bzm-mobile-toggle.active span:nth-child(2) { opacity: 0; }
+    .bzm-mobile-toggle.active span:nth-child(3) { top: 15px; transform: rotate(-45deg); }
+
+    /* ==========================================================
+       ABOUT HERO
+       ========================================================== */
+    .bzm-about-hero {
+      background: var(--bzm-paper);
+      padding: 88px 6vw 72px;
+      border-bottom: 1px solid var(--bzm-line);
+      position: relative;
+    }
+    .bzm-about-hero-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .bzm-about-eyebrow {
+      font-family: var(--bzm-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bzm-about-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--bzm-rust);
+    }
+    .bzm-about-hero h1 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(48px, 8vw, 128px);
+      line-height: 0.94;
+      letter-spacing: -0.035em;
+      margin: 0 0 48px;
+      max-width: 1100px;
+    }
+    .bzm-about-hero h1 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-about-hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      border-top: 1px solid var(--bzm-line);
+      padding-top: 32px;
+      max-width: 900px;
+    }
+    .bzm-about-hero-meta div span {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+      margin-bottom: 8px;
+    }
+    .bzm-about-hero-meta div strong {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: var(--bzm-ink);
+    }
+
+    /* ==========================================================
+       STORY SECTION
+       ========================================================== */
+    .bzm-about-story {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-about-story-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .bzm-about-story-img {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      position: sticky;
+      top: 100px;
+    }
+    .bzm-about-story-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.9) contrast(1.02);
+    }
+    .bzm-about-story-img .bzm-story-tag {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--bzm-paper);
+      padding: 14px 18px;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-ink);
+    }
+    .bzm-about-story-img .bzm-story-tag strong {
+      display: block;
+      font-family: var(--bzm-display);
+      font-style: italic;
+      font-size: 16px;
+      letter-spacing: -0.005em;
+      text-transform: none;
+      color: var(--bzm-rust);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .bzm-about-story-copy .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-about-story-copy .bzm-section-label .bzm-num {
+      color: var(--bzm-muted);
+      margin-right: 12px;
+    }
+    .bzm-about-story-copy h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0 0 40px;
+    }
+    .bzm-about-story-copy h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-about-story-copy p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--bzm-ink);
+      margin: 0 0 24px;
+    }
+    .bzm-about-story-copy p:first-of-type::first-letter {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 0.9;
+      float: left;
+      padding: 4px 12px 0 0;
+      color: var(--bzm-rust);
+    }
+    .bzm-about-story-copy .bzm-signature {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--bzm-line);
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+    }
+    .bzm-about-story-copy .bzm-signature strong {
+      display: block;
+      font-family: var(--bzm-display);
+      font-style: italic;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: var(--bzm-ink);
+      text-transform: none;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    /* ==========================================================
+       PROCESS (DARK 4-STEP BAND)
+       ========================================================== */
+    .bzm-about-process {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 120px 6vw;
+    }
+    .bzm-about-process * { color: var(--bzm-paper); }
+    .bzm-about-process-head {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .bzm-about-process .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-about-process .bzm-section-label .bzm-num {
+      color: rgba(244,241,236,0.5);
+      margin-right: 12px;
+    }
+    .bzm-about-process h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-about-process h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-about-process-blurb {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(244,241,236,0.65);
+      max-width: 520px;
+    }
+    .bzm-process-steps {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(244,241,236,0.18);
+    }
+    .bzm-process-step {
+      padding: 40px 32px 0 0;
+      border-right: 1px solid rgba(244,241,236,0.14);
+      position: relative;
+    }
+    .bzm-process-step:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+    .bzm-process-step-num {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 56px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--bzm-rust);
+      margin-bottom: 32px;
+    }
+    .bzm-process-step h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: -0.015em;
+      margin: 0 0 16px;
+      color: var(--bzm-paper);
+    }
+    .bzm-process-step p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(244,241,236,0.65);
+      margin: 0;
+    }
+
+    /* ==========================================================
+       VALUES STACK
+       ========================================================== */
+    .bzm-about-values {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-about-values-head {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+    }
+    .bzm-about-values .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-about-values .bzm-section-label .bzm-num {
+      color: var(--bzm-muted);
+      margin-right: 12px;
+    }
+    .bzm-about-values h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      max-width: 800px;
+    }
+    .bzm-about-values h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-values-list {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .bzm-value-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1.4fr;
+      gap: 32px;
+      padding: 40px 0;
+      border-top: 1px solid var(--bzm-line);
+      align-items: start;
+      transition: background 0.3s ease, padding 0.3s ease;
+    }
+    .bzm-value-row:last-child {
+      border-bottom: 1px solid var(--bzm-line);
+    }
+    .bzm-value-row:hover {
+      background: var(--bzm-cream);
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .bzm-value-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--bzm-muted);
+      padding-top: 12px;
+    }
+    .bzm-value-title {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .bzm-value-title em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-value-desc {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--bzm-muted);
+      margin: 0;
+      padding-top: 8px;
+    }
+
+    /* ==========================================================
+       TEAM TEASER (DARK WITH BG IMAGE)
+       ========================================================== */
+    .bzm-about-team {
+      position: relative;
+      padding: 0;
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+    }
+    .bzm-about-team * { color: var(--bzm-paper); }
+    .bzm-about-team-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .bzm-about-team-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.4) contrast(1.05);
+      opacity: 0.45;
+    }
+    .bzm-about-team-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 160px 6vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+    .bzm-about-team .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-about-team .bzm-section-label .bzm-num {
+      color: rgba(244,241,236,0.5);
+      margin-right: 12px;
+    }
+    .bzm-about-team h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(40px, 5vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-about-team h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-about-team p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(244,241,236,0.85);
+      margin: 0 0 28px;
+      max-width: 480px;
+    }
+
+    /* ==========================================================
+       CTA
+       ========================================================== */
+    .bzm-about-cta {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+      text-align: center;
+    }
+    .bzm-about-cta h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin: 0 auto 24px;
+      max-width: 800px;
+    }
+    .bzm-about-cta h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-about-cta p {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .bzm-btn-primary {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 16px 28px;
+      border: none;
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .bzm-btn-primary:hover {
+      background: var(--bzm-rust);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       FOOTER (shared across all pages)
+       ========================================================== */
+    .bzm-footer {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+    }
+    .bzm-footer a {
+      color: var(--bzm-paper);
+      transition: color 0.25s ease;
+    }
+    .bzm-footer a:hover { color: var(--bzm-rust); }
+    .bzm-footer-news {
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding: 56px 6vw;
+    }
+    .bzm-footer-news-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .bzm-footer-news h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-news h3 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-footer-news-form {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding-bottom: 12px;
+    }
+    .bzm-footer-news-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+      font-size: 16px;
+      padding: 12px 0;
+      outline: none;
+    }
+    .bzm-footer-news-form input::placeholder { color: var(--bzm-muted-dark); }
+    .bzm-footer-news-form button {
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 12px 0 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover { color: var(--bzm-rust); }
+    .bzm-footer-news-form button::after {
+      content: '→';
+      font-size: 16px;
+      transition: transform 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover::after { transform: translateX(4px); }
+    .bzm-footer-main { padding: 96px 6vw 72px; }
+    .bzm-footer-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+      gap: 64px;
+    }
+    .bzm-footer-brand h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      margin: 0 0 24px;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-brand h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+      display: block;
+    }
+    .bzm-footer-brand p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--bzm-muted-dark);
+      max-width: 360px;
+      margin: 0 0 32px;
+    }
+    .bzm-footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .bzm-footer-badge {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border: 1px solid var(--bzm-line-dark-strong);
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-col h4 {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+    }
+    .bzm-footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .bzm-footer-col li {
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+    .bzm-footer-col li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .bzm-footer-col li a:hover { gap: 14px; }
+    .bzm-footer-contact-line {
+      margin-bottom: 24px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .bzm-footer-contact-line .bzm-label {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+      margin-bottom: 6px;
+    }
+    .bzm-footer-phone {
+      font-family: var(--bzm-display);
+      font-size: 24px !important;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .bzm-footer-legal {
+      border-top: 1px solid var(--bzm-line-dark-strong);
+      padding: 24px 6vw;
+      margin-top: 56px;
+    }
+    .bzm-footer-legal-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+    }
+    .bzm-footer-legal-inner a { color: var(--bzm-muted-dark); }
+    .bzm-footer-legal-inner a:hover { color: var(--bzm-rust); }
+    .bzm-footer-legal-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================
+       RESPONSIVE
+       ========================================================== */
+    @media (max-width: 1024px) {
+      .bzm-nav { gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 900px) {
+      .bzm-nav {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--bzm-paper);
+        border-bottom: 1px solid var(--bzm-line);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 6vw;
+        gap: 20px;
+        transform: translateY(-200%);
+        transition: transform 0.35s ease;
+        z-index: 999;
+      }
+      .bzm-nav.active { transform: translateY(0); }
+      .bzm-nav-dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 8px 0 8px 16px;
+        margin-top: 8px;
+        min-width: 0;
+        background: transparent;
+      }
+      .bzm-header-cta { display: none; }
+      .bzm-mobile-toggle { display: block; }
+
+      .bzm-about-hero { padding: 64px 6vw 56px; }
+      .bzm-about-hero-meta { grid-template-columns: 1fr; gap: 20px; }
+      .bzm-about-story { padding: 80px 6vw; }
+      .bzm-about-story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bzm-about-story-img { position: static; aspect-ratio: 4 / 3; }
+      .bzm-about-process { padding: 80px 6vw; }
+      .bzm-about-process-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
+      .bzm-process-steps { grid-template-columns: 1fr; }
+      .bzm-process-step {
+        border-right: none;
+        border-bottom: 1px solid rgba(244,241,236,0.14);
+        padding: 32px 0;
+      }
+      .bzm-process-step:last-child { border-bottom: none; }
+      .bzm-about-values { padding: 80px 6vw; }
+      .bzm-value-row { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+      .bzm-value-row:hover { padding-left: 0; padding-right: 0; }
+      .bzm-about-team-inner { grid-template-columns: 1fr; gap: 32px; padding: 100px 6vw; }
+      .bzm-about-cta { padding: 80px 6vw; }
+
+      .bzm-footer-news-inner { grid-template-columns: 1fr; gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bzm-footer-main { padding: 72px 6vw 48px; }
+      .bzm-footer-news { padding: 40px 6vw; }
+      .bzm-footer-legal-inner { justify-content: flex-start; }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ==========================================================
+       HEADER / NAVIGATION
+       ========================================================== -->
+  <header class="bzm-header">
+    <div class="bzm-header-inner">
+
+      <a href="index.html" class="bzm-logo">
+        BZM <em>Enterprise</em>
+        <small>General Contractor — Edmonton, AB</small>
+      </a>
+
+      <nav class="bzm-nav" id="bzmNav">
+        <a href="index.html">Home</a>
+        <div class="bzm-nav-dropdown">
+          <a href="#services">Services</a>
+          <div class="bzm-nav-dropdown-menu">
+            <a href="services-new-home-builds.html">New Home Builds</a>
+            <a href="services-renovations.html">Renovations</a>
+            <a href="services-leasehold-improvements.html">Leasehold Improvements</a>
+          </div>
+        </div>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="bzm-header-cta">Request a Quote</a>
+
+      <button class="bzm-mobile-toggle" id="bzmMobileToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- ==========================================================
+       ABOUT HERO
+       ========================================================== -->
+  <section class="bzm-about-hero">
+    <div class="bzm-about-hero-inner">
+      <div class="bzm-about-eyebrow">About BZM Enterprise</div>
+      <h1>A small team,<br>a high <em>standard,</em><br>built right<br>here in Alberta.</h1>
+      <div class="bzm-about-hero-meta">
+        <div>
+          <span>Based In</span>
+          <strong>Edmonton, AB</strong>
+        </div>
+        <div>
+          <span>Specialty</span>
+          <strong>Builds &amp; Renovations</strong>
+        </div>
+        <div>
+          <span>Max Build</span>
+          <strong>2,000 sq/ft</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       STORY
+       ========================================================== -->
+  <section class="bzm-about-story">
+    <div class="bzm-about-story-grid">
+
+      <div class="bzm-about-story-img">
+        <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/about-story.jpeg" alt="BZM Enterprise on a job site in Edmonton">
+        <div class="bzm-story-tag">
+          On Site
+          <strong>Edmonton, AB</strong>
+        </div>
+      </div>
+
+      <div class="bzm-about-story-copy">
+        <div class="bzm-section-label"><span class="bzm-num">01 —</span>Our Story</div>
+        <h2>Building right,<br>at a <em>human scale.</em></h2>
+        <p>BZM Enterprise was founded on a simple idea: that a small home, a kitchen reno, or a tenant fit-up deserves the same care, communication, and craft as a custom mansion. Most contractors chase scale — we chase quality.</p>
+        <p>We focus on builds up to 2,000 sq/ft because that's where we can stay close to every detail. From the first walkthrough to the final inspection, the same team is on the job — answering your calls, owning the timeline, and making sure the finished space is one you're proud to live in or open the doors to.</p>
+        <p>Over the years we've worked across Edmonton and the surrounding communities — infill builds, garden suites, full home renovations, and commercial leasehold improvements. Every project is different. The standard isn't.</p>
+        <div class="bzm-signature">
+          <strong>The BZM Team</strong>
+          Edmonton, Alberta
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       HOW WE WORK
+       ========================================================== -->
+  <section class="bzm-about-process">
+
+    <div class="bzm-about-process-head">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">02 —</span>How We Work</div>
+        <h2>Four steps,<br>no <em>surprises.</em></h2>
+      </div>
+      <p class="bzm-about-process-blurb">Every BZM project follows the same simple flow — so you always know what's happening, what's next, and what it'll cost. No mystery line items, no missed deadlines.</p>
+    </div>
+
+    <div class="bzm-process-steps">
+
+      <div class="bzm-process-step">
+        <div class="bzm-process-step-num">01</div>
+        <h3>Listen</h3>
+        <p>We start with a free conversation — your space, your goals, your timeline, your budget. No pressure, no commitment.</p>
+      </div>
+
+      <div class="bzm-process-step">
+        <div class="bzm-process-step-num">02</div>
+        <h3>Plan</h3>
+        <p>A clear written scope and an honest quote. Drawings, finishes, milestones — everything spelled out before a hammer swings.</p>
+      </div>
+
+      <div class="bzm-process-step">
+        <div class="bzm-process-step-num">03</div>
+        <h3>Build</h3>
+        <p>Clean job sites, weekly updates, and the same crew you met on day one. Change orders are written and approved — never assumed.</p>
+      </div>
+
+      <div class="bzm-process-step">
+        <div class="bzm-process-step-num">04</div>
+        <h3>Hand Off</h3>
+        <p>Final walkthrough, deficiency list, and a workmanship warranty in writing. We don't disappear after the keys turn over.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       VALUES
+       ========================================================== -->
+  <section class="bzm-about-values">
+
+    <div class="bzm-about-values-head">
+      <div class="bzm-section-label"><span class="bzm-num">03 —</span>What We Stand For</div>
+      <h2>Five things we<br>won't compromise <em>on.</em></h2>
+    </div>
+
+    <div class="bzm-values-list">
+
+      <div class="bzm-value-row">
+        <div class="bzm-value-num">— 01</div>
+        <h3 class="bzm-value-title">Honest <em>scope.</em></h3>
+        <p class="bzm-value-desc">If we can't do it well, we'll tell you. If a feature isn't worth the money, we'll say so. Our quotes are line-itemed, plain-language, and yours to keep.</p>
+      </div>
+
+      <div class="bzm-value-row">
+        <div class="bzm-value-num">— 02</div>
+        <h3 class="bzm-value-title">Clean <em>job sites.</em></h3>
+        <p class="bzm-value-desc">Tools put away, dust controlled, debris hauled at the end of every day. Whether you're living in the house or running a business next door — you'll barely notice we're there.</p>
+      </div>
+
+      <div class="bzm-value-row">
+        <div class="bzm-value-num">— 03</div>
+        <h3 class="bzm-value-title">One <em>point of contact.</em></h3>
+        <p class="bzm-value-desc">You'll always know who to call. The person who quoted your project is the person managing it — no handoffs, no telephone games.</p>
+      </div>
+
+      <div class="bzm-value-row">
+        <div class="bzm-value-num">— 04</div>
+        <h3 class="bzm-value-title">Schedules <em>that hold.</em></h3>
+        <p class="bzm-value-desc">A start date that means start. A finish date we plan to beat. We don't pile up jobs — we close them out.</p>
+      </div>
+
+      <div class="bzm-value-row">
+        <div class="bzm-value-num">— 05</div>
+        <h3 class="bzm-value-title">Warranties <em>in writing.</em></h3>
+        <p class="bzm-value-desc">Every BZM build and renovation comes with a written workmanship warranty. If something's not right, we come back. Simple as that.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       TEAM TEASER
+       ========================================================== -->
+  <section class="bzm-about-team">
+    <div class="bzm-about-team-img">
+      <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/about-team.jpeg" alt="">
+    </div>
+    <div class="bzm-about-team-inner">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">04 —</span>Our Team</div>
+        <h2>The same crew,<br>start to <em>finish.</em></h2>
+      </div>
+      <div>
+        <p>Behind every BZM project is a small, tight crew — tradespeople we've worked with for years, who care about the finished product as much as we do. No subcontractor shuffling, no rotating faces, no excuses.</p>
+        <p>The result: a build that's coordinated, communicated, and consistent — exactly what you'd expect from a team that takes its name seriously.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       CTA
+       ========================================================== -->
+  <section class="bzm-about-cta">
+    <h2>Have a project<br><em>in mind?</em></h2>
+    <p>We'd love to hear about it. Free quote, honest answer, no commitment. Most replies within 24 hours.</p>
+    <a href="contact.html" class="bzm-btn-primary">Start the Conversation</a>
+  </section>
+
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="bzm-footer">
+
+    <section class="bzm-footer-news">
+      <div class="bzm-footer-news-inner">
+        <h3>Stay in the loop on <em>new builds &amp; projects.</em></h3>
+        <form class="bzm-footer-news-form" onsubmit="event.preventDefault(); alert('Thanks — we\'ll be in touch.');">
+          <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="bzm-footer-main">
+      <div class="bzm-footer-grid">
+
+        <div class="bzm-footer-brand">
+          <h2>BZM<br>Enterprise<em>Inc.</em></h2>
+          <p>Edmonton-based general contractor specializing in custom small homes up to 2,000 sq/ft, full-scale renovations, and commercial leasehold improvements.</p>
+          <div class="bzm-footer-badges">
+            <span class="bzm-footer-badge">Licensed</span>
+            <span class="bzm-footer-badge">Insured</span>
+            <span class="bzm-footer-badge">WCB Covered</span>
+          </div>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services-new-home-builds.html">New Home Builds</a></li>
+            <li><a href="services-renovations.html">Renovations</a></li>
+            <li><a href="services-leasehold-improvements.html">Leasehold Improvements</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About BZM</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Get in Touch</h4>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Call</span>
+            <a href="tel:" class="bzm-footer-phone">(000) 000-0000</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Email</span>
+            <a href="mailto:info@bzmenterprise.ca">info@bzmenterprise.ca</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Service Area</span>
+            <span>Edmonton &amp; surrounding<br>Alberta communities</span>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Hours</span>
+            <span>Mon – Fri  &nbsp; 8:00 – 6:00<br>Sat &nbsp; By appointment</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="bzm-footer-legal">
+      <div class="bzm-footer-legal-inner">
+        <div>© 2026 BZM Enterprise Inc. — All rights reserved.</div>
+        <div class="bzm-footer-legal-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ==========================================================
+       MOBILE NAV TOGGLE SCRIPT
+       ========================================================== -->
+  <script>
+    (function() {
+      const toggle = document.getElementById('bzmMobileToggle');
+      const nav = document.getElementById('bzmNav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function() {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('active');
+      });
+
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth < 900) {
+            toggle.classList.remove('active');
+            nav.classList.remove('active');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
