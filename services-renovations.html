@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BZM Enterprise — Bathroom, kitchen, basement, and whole-home renovations in Edmonton. Clean job sites, honest scope, finishes that hold up. Free quotes within 24 hours.">
+  <meta name="keywords" content="renovations Edmonton, bathroom renovation Edmonton, kitchen renovation Alberta, basement development Edmonton, whole home renovation">
+  <meta name="author" content="BZM Enterprise Inc.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Renovations — BZM Enterprise Edmonton">
+  <meta property="og:description" content="Bathroom, kitchen, basement, and whole-home renovations. Clean job sites, honest scope, finishes that hold up.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/reno-kitchen.jpeg">
+
+  <title>Renovations — BZM Enterprise Inc. | Bathroom, Kitchen, Basement &amp; Whole Home Edmonton</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       GLOBAL RESET + TOKENS
+       ========================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bzm-ink: #1a1d1a;
+      --bzm-paper: #f4f1ec;
+      --bzm-cream: #ebe5db;
+      --bzm-rust: #b5532a;
+      --bzm-rust-deep: #8a3d1c;
+      --bzm-line: #d6cfc2;
+      --bzm-line-dark: rgba(244, 241, 236, 0.14);
+      --bzm-line-dark-strong: rgba(244, 241, 236, 0.28);
+      --bzm-muted: #6b675f;
+      --bzm-muted-dark: #9a958c;
+      --bzm-display: 'Fraunces', 'Playfair Display', Georgia, serif;
+      --bzm-body: 'Inter Tight', 'Helvetica Neue', sans-serif;
+      --bzm-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--bzm-body);
+      background: var(--bzm-paper);
+      color: var(--bzm-ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ==========================================================
+       HEADER / NAV (shared)
+       ========================================================== */
+    .bzm-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bzm-paper);
+      border-bottom: 1px solid var(--bzm-line);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .bzm-header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .bzm-logo {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: -0.015em;
+      line-height: 1;
+      color: var(--bzm-ink);
+      flex-shrink: 0;
+    }
+    .bzm-logo em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-logo small {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+    .bzm-nav { display: flex; align-items: center; gap: 36px; }
+    .bzm-nav a {
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--bzm-ink);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .bzm-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--bzm-rust);
+      transition: width 0.25s ease;
+    }
+    .bzm-nav a:hover { color: var(--bzm-rust); }
+    .bzm-nav a:hover::after { width: 100%; }
+    .bzm-nav a.active { color: var(--bzm-rust); }
+    .bzm-nav a.active::after { width: 100%; }
+    .bzm-nav-dropdown { position: relative; }
+    .bzm-nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: -16px;
+      background: var(--bzm-paper);
+      border: 1px solid var(--bzm-line);
+      padding: 12px 0;
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+    .bzm-nav-dropdown:hover .bzm-nav-dropdown-menu,
+    .bzm-nav-dropdown:focus-within .bzm-nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .bzm-nav-dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .bzm-nav-dropdown-menu a::after { display: none; }
+    .bzm-nav-dropdown-menu a.active { color: var(--bzm-rust); background: var(--bzm-cream); }
+    .bzm-nav-dropdown-menu a:hover { background: var(--bzm-cream); color: var(--bzm-rust); }
+    .bzm-nav-dropdown > a::before {
+      content: '+';
+      display: inline-block;
+      margin-right: 4px;
+      color: var(--bzm-rust);
+      transition: transform 0.25s ease;
+    }
+    .bzm-nav-dropdown:hover > a::before { transform: rotate(45deg); }
+    .bzm-header-cta {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 12px 22px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.25s ease, transform 0.25s ease;
+      border: none;
+    }
+    .bzm-header-cta:hover { background: var(--bzm-rust); transform: translateY(-1px); }
+    .bzm-mobile-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+      position: relative;
+      cursor: pointer;
+    }
+    .bzm-mobile-toggle span {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--bzm-ink);
+      transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+    }
+    .bzm-mobile-toggle span:nth-child(1) { top: 8px; }
+    .bzm-mobile-toggle span:nth-child(2) { top: 15px; }
+    .bzm-mobile-toggle span:nth-child(3) { top: 22px; }
+    .bzm-mobile-toggle.active span:nth-child(1) { top: 15px; transform: rotate(45deg); }
+    .bzm-mobile-toggle.active span:nth-child(2) { opacity: 0; }
+    .bzm-mobile-toggle.active span:nth-child(3) { top: 15px; transform: rotate(-45deg); }
+
+    /* ==========================================================
+       HERO — split with category chips
+       ========================================================== */
+    .bzm-renos-hero {
+      background: var(--bzm-paper);
+      padding: 88px 6vw 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .bzm-renos-hero-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: end;
+      padding-bottom: 80px;
+    }
+    .bzm-renos-eyebrow {
+      font-family: var(--bzm-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bzm-renos-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--bzm-rust);
+    }
+    .bzm-renos-hero h1 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(48px, 7.5vw, 116px);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+      margin: 0 0 32px;
+    }
+    .bzm-renos-hero h1 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-renos-hero-lede {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--bzm-muted);
+      max-width: 460px;
+      margin: 0;
+    }
+    .bzm-renos-hero-lede strong { color: var(--bzm-ink); font-weight: 500; }
+    .bzm-cat-chips {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 32px 0 56px;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-cat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: transparent;
+      border: 1px solid var(--bzm-ink);
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+    }
+    .bzm-cat-chip::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--bzm-rust);
+      border-radius: 50%;
+    }
+    .bzm-cat-chip:hover {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+    }
+
+    /* ==========================================================
+       INTRO BAND
+       ========================================================== */
+    .bzm-renos-intro {
+      background: var(--bzm-cream);
+      padding: 100px 6vw;
+      border-top: 1px solid var(--bzm-line);
+      border-bottom: 1px solid var(--bzm-line);
+    }
+    .bzm-renos-intro-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-section-label .bzm-num { color: var(--bzm-muted); margin-right: 12px; }
+    .bzm-renos-intro h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(32px, 3.6vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .bzm-renos-intro h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-renos-intro-copy p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--bzm-ink);
+      margin: 0 0 24px;
+    }
+    .bzm-renos-intro-copy p:last-child { margin-bottom: 0; }
+    .bzm-renos-intro-copy p strong { font-weight: 600; }
+
+    /* ==========================================================
+       ROOM-BY-ROOM SHOWCASES
+       ========================================================== */
+    .bzm-rooms { background: var(--bzm-paper); }
+    .bzm-rooms-head {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 120px 6vw 64px;
+    }
+    .bzm-rooms-head h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      max-width: 800px;
+    }
+    .bzm-rooms-head h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+
+    .bzm-room {
+      padding: 80px 6vw;
+      border-top: 1px solid var(--bzm-line);
+      scroll-margin-top: 96px;
+    }
+    .bzm-room.alt { background: var(--bzm-cream); }
+    .bzm-room-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .bzm-room.flip .bzm-room-img { order: 2; }
+    .bzm-room-img {
+      aspect-ratio: 5 / 4;
+      overflow: hidden;
+      position: relative;
+    }
+    .bzm-room-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+      filter: saturate(0.92);
+    }
+    .bzm-room-img:hover img { transform: scale(1.04); }
+    .bzm-room-img-tag {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: var(--bzm-paper);
+      padding: 8px 14px;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-ink);
+    }
+    .bzm-room-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-room h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0 0 24px;
+    }
+    .bzm-room h3 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-room p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--bzm-muted);
+      margin: 0 0 32px;
+      max-width: 480px;
+    }
+    .bzm-room-scope {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-room-scope li {
+      padding: 12px 0;
+      font-size: 14px;
+      border-bottom: 1px solid var(--bzm-line);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--bzm-ink);
+    }
+    .bzm-room-scope li::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: var(--bzm-rust);
+      flex-shrink: 0;
+    }
+    .bzm-room-meta {
+      display: flex;
+      gap: 32px;
+      border-top: 1px solid var(--bzm-line);
+      padding-top: 24px;
+      flex-wrap: wrap;
+    }
+    .bzm-room-meta-item {
+      flex: 1;
+      min-width: 120px;
+    }
+    .bzm-room-meta-label {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+      margin-bottom: 6px;
+    }
+    .bzm-room-meta-value {
+      font-family: var(--bzm-display);
+      font-style: italic;
+      font-size: 22px;
+      letter-spacing: -0.005em;
+      color: var(--bzm-ink);
+      font-weight: 500;
+      line-height: 1.1;
+    }
+
+    /* ==========================================================
+       WHAT TO EXPECT — dark ribbon
+       ========================================================== */
+    .bzm-renos-expect {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 120px 6vw;
+    }
+    .bzm-renos-expect * { color: var(--bzm-paper); }
+    .bzm-renos-expect-head {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .bzm-renos-expect .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-renos-expect .bzm-section-label .bzm-num {
+      color: rgba(244,241,236,0.5);
+      margin-right: 12px;
+    }
+    .bzm-renos-expect h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-renos-expect h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-renos-expect-blurb {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(244,241,236,0.65);
+      max-width: 520px;
+    }
+    .bzm-ribbon {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(244,241,236,0.18);
+      border-bottom: 1px solid rgba(244,241,236,0.18);
+    }
+    .bzm-ribbon-step {
+      padding: 40px 24px;
+      border-right: 1px solid rgba(244,241,236,0.14);
+      position: relative;
+    }
+    .bzm-ribbon-step:last-child { border-right: none; }
+    .bzm-ribbon-step::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 24px;
+      width: 9px;
+      height: 9px;
+      background: var(--bzm-rust);
+      border-radius: 50%;
+    }
+    .bzm-ribbon-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: rgba(244,241,236,0.6);
+      margin-bottom: 16px;
+    }
+    .bzm-ribbon-step h4 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      margin: 0 0 12px;
+      color: var(--bzm-paper);
+    }
+    .bzm-ribbon-step p {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(244,241,236,0.7);
+      margin: 0;
+    }
+
+    /* ==========================================================
+       LIVING THROUGH IT
+       ========================================================== */
+    .bzm-during {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-during-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .bzm-during-img {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      position: relative;
+    }
+    .bzm-during-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.9);
+    }
+    .bzm-during h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0 0 32px;
+    }
+    .bzm-during h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-during p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--bzm-ink);
+      margin: 0 0 20px;
+      max-width: 540px;
+    }
+    .bzm-during-points {
+      list-style: none;
+      padding: 0;
+      margin: 32px 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 32px;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-during-points li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--bzm-line);
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .bzm-during-points li::before {
+      content: '✓';
+      color: var(--bzm-rust);
+      font-family: var(--bzm-display);
+      font-weight: 500;
+    }
+
+    /* ==========================================================
+       FAQ ACCORDION
+       ========================================================== */
+    .bzm-renos-faq {
+      padding: 120px 6vw;
+      background: var(--bzm-cream);
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-renos-faq-head {
+      max-width: 1400px;
+      margin: 0 auto 64px;
+    }
+    .bzm-renos-faq h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      max-width: 800px;
+    }
+    .bzm-renos-faq h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-faq-list {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .bzm-faq-item { border-top: 1px solid var(--bzm-line); }
+    .bzm-faq-item:last-child { border-bottom: 1px solid var(--bzm-line); }
+    .bzm-faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 28px 0;
+      display: grid;
+      grid-template-columns: 60px 1fr 40px;
+      gap: 24px;
+      align-items: center;
+      transition: color 0.25s ease;
+    }
+    .bzm-faq-item summary::-webkit-details-marker { display: none; }
+    .bzm-faq-item summary:hover { color: var(--bzm-rust); }
+    .bzm-faq-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--bzm-muted);
+    }
+    .bzm-faq-q {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(20px, 2.2vw, 26px);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .bzm-faq-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--bzm-ink);
+      border-radius: 50%;
+      position: relative;
+      transition: background 0.25s ease, border-color 0.25s ease;
+      justify-self: end;
+    }
+    .bzm-faq-icon::before,
+    .bzm-faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--bzm-ink);
+      transition: background 0.25s ease, transform 0.3s ease;
+    }
+    .bzm-faq-icon::before {
+      top: 50%; left: 7px; right: 7px; height: 1px; transform: translateY(-50%);
+    }
+    .bzm-faq-icon::after {
+      left: 50%; top: 7px; bottom: 7px; width: 1px; transform: translateX(-50%);
+    }
+    .bzm-faq-item[open] .bzm-faq-icon {
+      background: var(--bzm-rust);
+      border-color: var(--bzm-rust);
+    }
+    .bzm-faq-item[open] .bzm-faq-icon::before,
+    .bzm-faq-item[open] .bzm-faq-icon::after { background: var(--bzm-paper); }
+    .bzm-faq-item[open] .bzm-faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+    .bzm-faq-a {
+      padding: 0 0 32px 84px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--bzm-muted);
+      max-width: 800px;
+    }
+
+    /* ==========================================================
+       CTA
+       ========================================================== */
+    .bzm-renos-cta {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+      text-align: center;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-renos-cta h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin: 0 auto 24px;
+      max-width: 800px;
+    }
+    .bzm-renos-cta h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-renos-cta p {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .bzm-btn-primary {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 16px 28px;
+      border: none;
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .bzm-btn-primary:hover {
+      background: var(--bzm-rust);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       FOOTER (shared)
+       ========================================================== */
+    .bzm-footer {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+    }
+    .bzm-footer a { color: var(--bzm-paper); transition: color 0.25s ease; }
+    .bzm-footer a:hover { color: var(--bzm-rust); }
+    .bzm-footer-news {
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding: 56px 6vw;
+    }
+    .bzm-footer-news-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .bzm-footer-news h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-news h3 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-footer-news-form {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding-bottom: 12px;
+    }
+    .bzm-footer-news-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+      font-size: 16px;
+      padding: 12px 0;
+      outline: none;
+    }
+    .bzm-footer-news-form input::placeholder { color: var(--bzm-muted-dark); }
+    .bzm-footer-news-form button {
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 12px 0 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover { color: var(--bzm-rust); }
+    .bzm-footer-news-form button::after {
+      content: '→';
+      font-size: 16px;
+      transition: transform 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover::after { transform: translateX(4px); }
+    .bzm-footer-main { padding: 96px 6vw 72px; }
+    .bzm-footer-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+      gap: 64px;
+    }
+    .bzm-footer-brand h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      margin: 0 0 24px;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-brand h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+      display: block;
+    }
+    .bzm-footer-brand p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--bzm-muted-dark);
+      max-width: 360px;
+      margin: 0 0 32px;
+    }
+    .bzm-footer-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .bzm-footer-badge {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border: 1px solid var(--bzm-line-dark-strong);
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-col h4 {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+    }
+    .bzm-footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .bzm-footer-col li { margin-bottom: 14px; font-size: 15px; }
+    .bzm-footer-col li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .bzm-footer-col li a:hover { gap: 14px; }
+    .bzm-footer-contact-line { margin-bottom: 24px; font-size: 15px; line-height: 1.5; }
+    .bzm-footer-contact-line .bzm-label {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+      margin-bottom: 6px;
+    }
+    .bzm-footer-phone {
+      font-family: var(--bzm-display);
+      font-size: 24px !important;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .bzm-footer-legal {
+      border-top: 1px solid var(--bzm-line-dark-strong);
+      padding: 24px 6vw;
+      margin-top: 56px;
+    }
+    .bzm-footer-legal-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+    }
+    .bzm-footer-legal-inner a { color: var(--bzm-muted-dark); }
+    .bzm-footer-legal-inner a:hover { color: var(--bzm-rust); }
+    .bzm-footer-legal-links { display: flex; gap: 24px; flex-wrap: wrap; }
+
+    /* ==========================================================
+       RESPONSIVE
+       ========================================================== */
+    @media (max-width: 1024px) {
+      .bzm-nav { gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 900px) {
+      .bzm-nav {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--bzm-paper);
+        border-bottom: 1px solid var(--bzm-line);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 6vw;
+        gap: 20px;
+        transform: translateY(-200%);
+        transition: transform 0.35s ease;
+        z-index: 999;
+      }
+      .bzm-nav.active { transform: translateY(0); }
+      .bzm-nav-dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 8px 0 8px 16px;
+        margin-top: 8px;
+        min-width: 0;
+        background: transparent;
+      }
+      .bzm-header-cta { display: none; }
+      .bzm-mobile-toggle { display: block; }
+
+      .bzm-renos-hero { padding: 64px 6vw 0; }
+      .bzm-renos-hero-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 48px; }
+      .bzm-cat-chips { padding: 24px 0 40px; }
+      .bzm-renos-intro { padding: 64px 6vw; }
+      .bzm-renos-intro-inner { grid-template-columns: 1fr; gap: 24px; }
+      .bzm-rooms-head { padding: 80px 6vw 40px; }
+      .bzm-room { padding: 56px 6vw; }
+      .bzm-room-grid { grid-template-columns: 1fr; gap: 32px; }
+      .bzm-room.flip .bzm-room-img { order: 0; }
+      .bzm-room-meta { gap: 16px 24px; }
+      .bzm-renos-expect { padding: 80px 6vw; }
+      .bzm-renos-expect-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
+      .bzm-ribbon { grid-template-columns: 1fr; }
+      .bzm-ribbon-step {
+        border-right: none;
+        border-bottom: 1px solid rgba(244,241,236,0.14);
+        padding: 28px 0;
+      }
+      .bzm-ribbon-step::before { left: 0; }
+      .bzm-ribbon-step:last-child { border-bottom: none; }
+      .bzm-during { padding: 80px 6vw; }
+      .bzm-during-grid { grid-template-columns: 1fr; gap: 32px; }
+      .bzm-during-points { grid-template-columns: 1fr; }
+      .bzm-renos-faq, .bzm-renos-cta { padding: 80px 6vw; }
+      .bzm-faq-item summary { grid-template-columns: 32px 1fr 28px; gap: 12px; }
+      .bzm-faq-a { padding-left: 44px; }
+
+      .bzm-footer-news-inner { grid-template-columns: 1fr; gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bzm-footer-main { padding: 72px 6vw 48px; }
+      .bzm-footer-news { padding: 40px 6vw; }
+      .bzm-footer-legal-inner { justify-content: flex-start; }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ==========================================================
+       HEADER
+       ========================================================== -->
+  <header class="bzm-header">
+    <div class="bzm-header-inner">
+
+      <a href="index.html" class="bzm-logo">
+        BZM <em>Enterprise</em>
+        <small>General Contractor — Edmonton, AB</small>
+      </a>
+
+      <nav class="bzm-nav" id="bzmNav">
+        <a href="index.html">Home</a>
+        <div class="bzm-nav-dropdown">
+          <a href="#" class="active">Services</a>
+          <div class="bzm-nav-dropdown-menu">
+            <a href="services-new-home-builds.html">New Home Builds</a>
+            <a href="services-renovations.html" class="active">Renovations</a>
+            <a href="services-leasehold-improvements.html">Leasehold Improvements</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="bzm-header-cta">Request a Quote</a>
+
+      <button class="bzm-mobile-toggle" id="bzmMobileToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- ==========================================================
+       HERO
+       ========================================================== -->
+  <section class="bzm-renos-hero">
+    <div class="bzm-renos-hero-grid">
+      <div>
+        <div class="bzm-renos-eyebrow">Services / 02 — Renovations</div>
+        <h1>Renovations,<br>done <em>without<br>the drama.</em></h1>
+      </div>
+      <p class="bzm-renos-hero-lede">Bathrooms, kitchens, basements, and whole-home transformations across Edmonton — <strong>clean job sites, honest scope, finishes that hold up.</strong></p>
+    </div>
+
+    <div class="bzm-cat-chips">
+      <a href="#bathroom" class="bzm-cat-chip">01 / Bathroom</a>
+      <a href="#kitchen" class="bzm-cat-chip">02 / Kitchen</a>
+      <a href="#basement" class="bzm-cat-chip">03 / Basement</a>
+      <a href="#whole-home" class="bzm-cat-chip">04 / Whole Home</a>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       INTRO
+       ========================================================== -->
+  <section class="bzm-renos-intro">
+    <div class="bzm-renos-intro-inner">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">01 —</span>The Approach</div>
+        <h2>Renovating a home<br>you <em>still live in.</em></h2>
+      </div>
+      <div class="bzm-renos-intro-copy">
+        <p>Most renovations happen while life keeps going. Kids in school, dinners to cook, work-from-home calls in the next room. The way a contractor handles that reality — dust control, schedule, communication — matters as much as the finished product.</p>
+        <p>BZM specializes in <strong>renovations that respect your timeline and your space.</strong> Tools put away at the end of every day. Plastic and dust barriers up before demolition. A weekly Monday update so you always know what's happening this week and next.</p>
+        <p>From a single bathroom to a full home down to the studs — every BZM renovation comes with a written scope, a fixed quote where possible, and a workmanship warranty in your hand at the end.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       ROOMS
+       ========================================================== -->
+  <section class="bzm-rooms">
+    <div class="bzm-rooms-head">
+      <div class="bzm-section-label"><span class="bzm-num">02 —</span>What We Renovate</div>
+      <h2>Four spaces,<br>one <em>standard.</em></h2>
+    </div>
+
+
+    <!-- ROOM 01: BATHROOM -->
+    <div class="bzm-room" id="bathroom">
+      <div class="bzm-room-grid">
+
+        <div class="bzm-room-img">
+          <span class="bzm-room-img-tag">01 / Bathroom</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/reno-bathroom.jpeg" alt="Bathroom renovation by BZM Enterprise">
+        </div>
+
+        <div>
+          <div class="bzm-room-num">— 01 / Bathroom Renovations</div>
+          <h3>Bathrooms<br>that <em>function and finish well.</em></h3>
+          <p>Powder rooms, ensuites, full family bathrooms — taken down to studs, re-plumbed, re-tiled, and finished with fixtures that won't disappoint in three years.</p>
+
+          <ul class="bzm-room-scope">
+            <li>Demolition &amp; debris haul-away</li>
+            <li>Plumbing rough-in &amp; fixture installation</li>
+            <li>Electrical &amp; ventilation upgrades</li>
+            <li>Waterproofing &amp; tile work</li>
+            <li>Vanity, mirror, lighting &amp; hardware</li>
+            <li>Final finishing &amp; cleanup</li>
+          </ul>
+
+          <div class="bzm-room-meta">
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Typical Duration</div>
+              <div class="bzm-room-meta-value">3 – 5 weeks</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Permit Required</div>
+              <div class="bzm-room-meta-value">Sometimes</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Live On Site</div>
+              <div class="bzm-room-meta-value">Usually yes</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ROOM 02: KITCHEN -->
+    <div class="bzm-room alt flip" id="kitchen">
+      <div class="bzm-room-grid">
+
+        <div class="bzm-room-img">
+          <span class="bzm-room-img-tag">02 / Kitchen</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/reno-kitchen.jpeg" alt="Kitchen renovation by BZM Enterprise">
+        </div>
+
+        <div>
+          <div class="bzm-room-num">— 02 / Kitchen Renovations</div>
+          <h3>The room<br>your home <em>revolves around.</em></h3>
+          <p>From cabinet refacing to full gut-and-rebuild kitchens — we handle the layout, the trades, the cabinetry, and the finishing details that turn a kitchen into the heart of a house.</p>
+
+          <ul class="bzm-room-scope">
+            <li>Layout planning &amp; drawings</li>
+            <li>Demolition &amp; structural work (if required)</li>
+            <li>Custom cabinetry &amp; millwork</li>
+            <li>Countertops &amp; backsplash</li>
+            <li>Plumbing, electrical &amp; appliance install</li>
+            <li>Lighting, hardware &amp; final finishing</li>
+          </ul>
+
+          <div class="bzm-room-meta">
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Typical Duration</div>
+              <div class="bzm-room-meta-value">5 – 8 weeks</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Permit Required</div>
+              <div class="bzm-room-meta-value">Often</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Live On Site</div>
+              <div class="bzm-room-meta-value">Yes (with workaround)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ROOM 03: BASEMENT -->
+    <div class="bzm-room" id="basement">
+      <div class="bzm-room-grid">
+
+        <div class="bzm-room-img">
+          <span class="bzm-room-img-tag">03 / Basement</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/reno-basement.jpeg" alt="Basement development by BZM Enterprise">
+        </div>
+
+        <div>
+          <div class="bzm-room-num">— 03 / Basement Development</div>
+          <h3>Square footage<br>you <em>already paid for.</em></h3>
+          <p>Unfinished basements are the cheapest way to add living space. Family rooms, home offices, gym, guest suite, or a legal secondary suite for rental — we develop every kind.</p>
+
+          <ul class="bzm-room-scope">
+            <li>Framing, insulation &amp; vapor barrier</li>
+            <li>Plumbing, electrical &amp; HVAC extensions</li>
+            <li>Egress windows &amp; safety code compliance</li>
+            <li>Drywall, paint, flooring &amp; trim</li>
+            <li>Bathrooms, kitchenettes &amp; bedrooms</li>
+            <li>Secondary suite permitting (when applicable)</li>
+          </ul>
+
+          <div class="bzm-room-meta">
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Typical Duration</div>
+              <div class="bzm-room-meta-value">6 – 10 weeks</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Permit Required</div>
+              <div class="bzm-room-meta-value">Yes</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Live On Site</div>
+              <div class="bzm-room-meta-value">Yes</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ROOM 04: WHOLE HOME -->
+    <div class="bzm-room alt flip" id="whole-home">
+      <div class="bzm-room-grid">
+
+        <div class="bzm-room-img">
+          <span class="bzm-room-img-tag">04 / Whole Home</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/reno-whole-home.jpeg" alt="Whole home renovation by BZM Enterprise">
+        </div>
+
+        <div>
+          <div class="bzm-room-num">— 04 / Whole Home Renovations</div>
+          <h3>From dated<br>to <em>delivered.</em></h3>
+          <p>Full-scale home renovations — split-levels brought into the present, dated bungalows reimagined, fixer-uppers turned into forever homes. Down to studs, back up to spec.</p>
+
+          <ul class="bzm-room-scope">
+            <li>Architectural planning &amp; drawings</li>
+            <li>Full interior demolition &amp; structural work</li>
+            <li>New mechanical, electrical &amp; plumbing systems</li>
+            <li>Insulation, drywall &amp; refinishing</li>
+            <li>Custom kitchens, baths &amp; built-ins</li>
+            <li>Exterior refinishing (where in scope)</li>
+          </ul>
+
+          <div class="bzm-room-meta">
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Typical Duration</div>
+              <div class="bzm-room-meta-value">4 – 7 months</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Permit Required</div>
+              <div class="bzm-room-meta-value">Yes</div>
+            </div>
+            <div class="bzm-room-meta-item">
+              <div class="bzm-room-meta-label">Live On Site</div>
+              <div class="bzm-room-meta-value">Often relocate</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================================
+       WHAT TO EXPECT
+       ========================================================== -->
+  <section class="bzm-renos-expect">
+
+    <div class="bzm-renos-expect-head">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">03 —</span>What to Expect</div>
+        <h2>Five steps,<br>start to <em>finish.</em></h2>
+      </div>
+      <p class="bzm-renos-expect-blurb">Every BZM renovation runs through the same predictable flow. You'll always know what's happening, who's coming, and what's next.</p>
+    </div>
+
+    <div class="bzm-ribbon">
+
+      <div class="bzm-ribbon-step">
+        <div class="bzm-ribbon-num">— 01 —</div>
+        <h4>Walkthrough</h4>
+        <p>Free in-home consultation. We measure, listen, and ask the right questions before quoting anything.</p>
+      </div>
+
+      <div class="bzm-ribbon-step">
+        <div class="bzm-ribbon-num">— 02 —</div>
+        <h4>Quote &amp; Scope</h4>
+        <p>Detailed line-item proposal in writing. Allowances called out, exclusions clear, no fine print.</p>
+      </div>
+
+      <div class="bzm-ribbon-step">
+        <div class="bzm-ribbon-num">— 03 —</div>
+        <h4>Selections</h4>
+        <p>We help you finalize finishes — tile, paint, hardware, fixtures — before demolition starts.</p>
+      </div>
+
+      <div class="bzm-ribbon-step">
+        <div class="bzm-ribbon-num">— 04 —</div>
+        <h4>Build</h4>
+        <p>Same crew on site daily. Weekly Monday updates. Dust barriers up, job site swept down.</p>
+      </div>
+
+      <div class="bzm-ribbon-step">
+        <div class="bzm-ribbon-num">— 05 —</div>
+        <h4>Hand-Off</h4>
+        <p>Final walkthrough, deficiency punch-out, and a written workmanship warranty in your hand.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       LIVING DURING THE RENO
+       ========================================================== -->
+  <section class="bzm-during">
+    <div class="bzm-during-grid">
+
+      <div class="bzm-during-img">
+        <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/reno-during.jpeg" alt="Clean BZM Enterprise renovation job site">
+      </div>
+
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">04 —</span>Living Through It</div>
+        <h2>You shouldn't<br>have to <em>move out.</em></h2>
+        <p>For most renovations — especially bathrooms, basements, and partial-home work — you can stay right where you are. We design around the way you actually live.</p>
+        <ul class="bzm-during-points">
+          <li>Dust barriers from day one</li>
+          <li>Daily site clean-up</li>
+          <li>Tools secured each evening</li>
+          <li>Defined working hours</li>
+          <li>Weekly Monday updates</li>
+          <li>Pet-aware, kid-aware crews</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       FAQ
+       ========================================================== -->
+  <section class="bzm-renos-faq">
+
+    <div class="bzm-renos-faq-head">
+      <div class="bzm-section-label"><span class="bzm-num">05 —</span>Common Questions</div>
+      <h2>What people<br>ask <em>before they renovate.</em></h2>
+    </div>
+
+    <div class="bzm-faq-list">
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 01</span>
+          <span class="bzm-faq-q">How much will my renovation cost?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Renovation cost depends on scope, finishes, structural work, and the age of the home. We provide free in-home consultations and detailed line-item quotes — so you'll know exactly what you're paying for, with allowances clearly identified for finish selections still to be made.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 02</span>
+          <span class="bzm-faq-q">Can I stay in my home during the renovation?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">For most projects — bathrooms, basements, single rooms, kitchens (with workarounds) — yes. For whole-home gut renovations, most clients choose to relocate during the heaviest mechanical and demolition phases. We'll be honest about what's livable and what isn't before you commit.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 03</span>
+          <span class="bzm-faq-q">Do you handle permits?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Yes. When permits are required (most kitchens, basements, and structural work), we pull them, schedule inspections, and handle all communication with the City of Edmonton or relevant municipality.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 04</span>
+          <span class="bzm-faq-q">Can you work with my designer or architect?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Absolutely. We collaborate with interior designers, architects, and millwork specialists regularly. If you have plans already, bring them — we'll quote the build. If you don't, we can connect you with designers we've worked with for years.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 05</span>
+          <span class="bzm-faq-q">What about change orders?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Change orders are a normal part of any renovation — but they shouldn't be a surprise. Every change is written, priced, and signed off before work happens. No verbal "yeah, just add that" deals that show up on the final invoice.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 06</span>
+          <span class="bzm-faq-q">Do you provide a warranty?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Every BZM renovation comes with a written workmanship warranty. The duration and specific coverage are detailed in your contract. If something installed by us isn't right, we come back and make it right.</div>
+      </details>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       CTA
+       ========================================================== -->
+  <section class="bzm-renos-cta">
+    <h2>Thinking about<br>a <em>renovation?</em></h2>
+    <p>Free in-home consultation. Honest scope, fair quote, and a clear timeline before any tools come out. Most replies within 24 hours.</p>
+    <a href="contact.html" class="bzm-btn-primary">Book a Walkthrough</a>
+  </section>
+
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="bzm-footer">
+
+    <section class="bzm-footer-news">
+      <div class="bzm-footer-news-inner">
+        <h3>Stay in the loop on <em>new builds &amp; projects.</em></h3>
+        <form class="bzm-footer-news-form" onsubmit="event.preventDefault(); alert('Thanks — we\'ll be in touch.');">
+          <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="bzm-footer-main">
+      <div class="bzm-footer-grid">
+
+        <div class="bzm-footer-brand">
+          <h2>BZM<br>Enterprise<em>Inc.</em></h2>
+          <p>Edmonton-based general contractor specializing in custom small homes up to 2,000 sq/ft, full-scale renovations, and commercial leasehold improvements.</p>
+          <div class="bzm-footer-badges">
+            <span class="bzm-footer-badge">Licensed</span>
+            <span class="bzm-footer-badge">Insured</span>
+            <span class="bzm-footer-badge">WCB Covered</span>
+          </div>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services-new-home-builds.html">New Home Builds</a></li>
+            <li><a href="services-renovations.html">Renovations</a></li>
+            <li><a href="services-leasehold-improvements.html">Leasehold Improvements</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About BZM</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Get in Touch</h4>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Call</span>
+            <a href="tel:" class="bzm-footer-phone">(000) 000-0000</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Email</span>
+            <a href="mailto:info@bzmenterprise.ca">info@bzmenterprise.ca</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Service Area</span>
+            <span>Edmonton &amp; surrounding<br>Alberta communities</span>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Hours</span>
+            <span>Mon – Fri  &nbsp; 8:00 – 6:00<br>Sat &nbsp; By appointment</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="bzm-footer-legal">
+      <div class="bzm-footer-legal-inner">
+        <div>© 2026 BZM Enterprise Inc. — All rights reserved.</div>
+        <div class="bzm-footer-legal-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ==========================================================
+       MOBILE NAV
+       ========================================================== -->
+  <script>
+    (function() {
+      const toggle = document.getElementById('bzmMobileToggle');
+      const nav = document.getElementById('bzmNav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function() {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('active');
+      });
+
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth < 900) {
+            toggle.classList.remove('active');
+            nav.classList.remove('active');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
