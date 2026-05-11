@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BZM Enterprise — Custom small home builds in Edmonton up to 2,000 sq/ft. Infill builds, garden suites, custom plans, and starter homes. Free quotes within 24 hours.">
+  <meta name="keywords" content="custom home builder Edmonton, small home builder Alberta, infill builder Edmonton, garden suite builder, 2000 sq ft home builder">
+  <meta name="author" content="BZM Enterprise Inc.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="New Home Builds — BZM Enterprise Edmonton">
+  <meta property="og:description" content="Small custom homes built to 2,000 sq/ft. Infill, garden suites, custom plans, and starter homes in Edmonton and area.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/builds-hero.jpeg">
+
+  <title>New Home Builds — BZM Enterprise Inc. | Small Custom Homes Edmonton</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       GLOBAL RESET + TOKENS
+       ========================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bzm-ink: #1a1d1a;
+      --bzm-paper: #f4f1ec;
+      --bzm-cream: #ebe5db;
+      --bzm-rust: #b5532a;
+      --bzm-rust-deep: #8a3d1c;
+      --bzm-line: #d6cfc2;
+      --bzm-line-dark: rgba(244, 241, 236, 0.14);
+      --bzm-line-dark-strong: rgba(244, 241, 236, 0.28);
+      --bzm-muted: #6b675f;
+      --bzm-muted-dark: #9a958c;
+      --bzm-display: 'Fraunces', 'Playfair Display', Georgia, serif;
+      --bzm-body: 'Inter Tight', 'Helvetica Neue', sans-serif;
+      --bzm-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--bzm-body);
+      background: var(--bzm-paper);
+      color: var(--bzm-ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ==========================================================
+       HEADER / NAV (shared)
+       ========================================================== */
+    .bzm-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bzm-paper);
+      border-bottom: 1px solid var(--bzm-line);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .bzm-header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .bzm-logo {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: -0.015em;
+      line-height: 1;
+      color: var(--bzm-ink);
+      flex-shrink: 0;
+    }
+    .bzm-logo em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-logo small {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+    .bzm-nav { display: flex; align-items: center; gap: 36px; }
+    .bzm-nav a {
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--bzm-ink);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .bzm-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--bzm-rust);
+      transition: width 0.25s ease;
+    }
+    .bzm-nav a:hover { color: var(--bzm-rust); }
+    .bzm-nav a:hover::after { width: 100%; }
+    .bzm-nav a.active { color: var(--bzm-rust); }
+    .bzm-nav a.active::after { width: 100%; }
+    .bzm-nav-dropdown { position: relative; }
+    .bzm-nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: -16px;
+      background: var(--bzm-paper);
+      border: 1px solid var(--bzm-line);
+      padding: 12px 0;
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+    .bzm-nav-dropdown:hover .bzm-nav-dropdown-menu,
+    .bzm-nav-dropdown:focus-within .bzm-nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .bzm-nav-dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .bzm-nav-dropdown-menu a::after { display: none; }
+    .bzm-nav-dropdown-menu a.active { color: var(--bzm-rust); background: var(--bzm-cream); }
+    .bzm-nav-dropdown-menu a:hover { background: var(--bzm-cream); color: var(--bzm-rust); }
+    .bzm-nav-dropdown > a::before {
+      content: '+';
+      display: inline-block;
+      margin-right: 4px;
+      color: var(--bzm-rust);
+      transition: transform 0.25s ease;
+    }
+    .bzm-nav-dropdown:hover > a::before { transform: rotate(45deg); }
+    .bzm-header-cta {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 12px 22px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.25s ease, transform 0.25s ease;
+      border: none;
+    }
+    .bzm-header-cta:hover { background: var(--bzm-rust); transform: translateY(-1px); }
+    .bzm-mobile-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+      position: relative;
+      cursor: pointer;
+    }
+    .bzm-mobile-toggle span {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--bzm-ink);
+      transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+    }
+    .bzm-mobile-toggle span:nth-child(1) { top: 8px; }
+    .bzm-mobile-toggle span:nth-child(2) { top: 15px; }
+    .bzm-mobile-toggle span:nth-child(3) { top: 22px; }
+    .bzm-mobile-toggle.active span:nth-child(1) { top: 15px; transform: rotate(45deg); }
+    .bzm-mobile-toggle.active span:nth-child(2) { opacity: 0; }
+    .bzm-mobile-toggle.active span:nth-child(3) { top: 15px; transform: rotate(-45deg); }
+
+    /* ==========================================================
+       HERO — cinematic full-bleed
+       ========================================================== */
+    .bzm-builds-hero {
+      position: relative;
+      height: clamp(540px, 80vh, 760px);
+      overflow: hidden;
+      background: var(--bzm-ink);
+    }
+    .bzm-builds-hero,
+    .bzm-builds-hero * { color: var(--bzm-paper); }
+    .bzm-builds-hero-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .bzm-builds-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.92) contrast(1.05);
+    }
+    .bzm-builds-hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(26,29,26,0.15) 0%, rgba(26,29,26,0.55) 60%, rgba(26,29,26,0.85) 100%);
+    }
+    .bzm-builds-hero-inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 6vw 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .bzm-builds-hero-eyebrow {
+      font-family: var(--bzm-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bzm-builds-hero-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--bzm-rust);
+    }
+    .bzm-builds-hero h1 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(44px, 7vw, 104px);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+      margin: 0 0 32px;
+      max-width: 1100px;
+      color: var(--bzm-paper);
+    }
+    .bzm-builds-hero h1 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-builds-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      border-top: 1px solid rgba(244,241,236,0.28);
+      padding-top: 24px;
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(244,241,236,0.85);
+    }
+    .bzm-builds-hero-meta strong { color: var(--bzm-paper); font-weight: 500; }
+
+    /* ==========================================================
+       INTRO
+       ========================================================== */
+    .bzm-builds-intro {
+      background: var(--bzm-paper);
+      padding: 120px 6vw;
+    }
+    .bzm-builds-intro-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-section-label .bzm-num { color: var(--bzm-muted); margin-right: 12px; }
+    .bzm-builds-intro h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(32px, 3.6vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .bzm-builds-intro h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-builds-intro-copy p {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--bzm-ink);
+      margin: 0 0 24px;
+    }
+    .bzm-builds-intro-copy p:last-child { margin-bottom: 0; }
+    .bzm-builds-intro-copy p strong { color: var(--bzm-ink); font-weight: 600; }
+
+    /* ==========================================================
+       SPEC SHEET
+       ========================================================== */
+    .bzm-builds-included {
+      background: var(--bzm-cream);
+      padding: 120px 6vw;
+      border-top: 1px solid var(--bzm-line);
+      border-bottom: 1px solid var(--bzm-line);
+    }
+    .bzm-builds-included-head {
+      max-width: 1400px;
+      margin: 0 auto 64px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .bzm-builds-included-head h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .bzm-builds-included-head h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-builds-included-blurb {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+    .bzm-spec-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-spec-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      padding: 24px 32px 24px 0;
+      border-bottom: 1px solid var(--bzm-line);
+      align-items: start;
+    }
+    .bzm-spec-row:nth-child(odd) {
+      border-right: 1px solid var(--bzm-line);
+      padding-right: 32px;
+    }
+    .bzm-spec-row:nth-child(even) { padding-left: 32px; }
+    .bzm-spec-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--bzm-rust);
+      padding-top: 4px;
+    }
+    .bzm-spec-row h4 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+    }
+    .bzm-spec-row p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--bzm-muted);
+    }
+
+    /* ==========================================================
+       BUILD TYPES GRID
+       ========================================================== */
+    .bzm-builds-types {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-builds-types-head {
+      max-width: 1400px;
+      margin: 0 auto 64px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .bzm-builds-types-head h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .bzm-builds-types-head h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-builds-types-blurb {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+    .bzm-types-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .bzm-type-card {
+      background: var(--bzm-cream);
+      padding: 0;
+      overflow: hidden;
+      transition: transform 0.4s ease;
+    }
+    .bzm-type-card:hover { transform: translateY(-4px); }
+    .bzm-type-img {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      position: relative;
+    }
+    .bzm-type-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+      filter: saturate(0.9);
+    }
+    .bzm-type-card:hover .bzm-type-img img { transform: scale(1.05); }
+    .bzm-type-img-tag {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--bzm-paper);
+      padding: 6px 12px;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bzm-ink);
+    }
+    .bzm-type-body { padding: 36px 32px 40px; }
+    .bzm-type-body h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 30px;
+      letter-spacing: -0.015em;
+      margin: 0 0 12px;
+      line-height: 1.1;
+    }
+    .bzm-type-body h3 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-type-body p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--bzm-muted);
+      margin: 0 0 20px;
+    }
+    .bzm-type-meta {
+      display: flex;
+      gap: 20px;
+      border-top: 1px solid var(--bzm-line);
+      padding-top: 16px;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+    }
+    .bzm-type-meta strong { color: var(--bzm-ink); font-weight: 500; }
+
+    /* ==========================================================
+       TIMELINE (DARK BAND)
+       ========================================================== */
+    .bzm-builds-timeline {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 120px 6vw;
+    }
+    .bzm-builds-timeline * { color: var(--bzm-paper); }
+    .bzm-builds-timeline-head {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .bzm-builds-timeline .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-builds-timeline .bzm-section-label .bzm-num {
+      color: rgba(244,241,236,0.5);
+      margin-right: 12px;
+    }
+    .bzm-builds-timeline h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-builds-timeline h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-builds-timeline-blurb {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(244,241,236,0.65);
+      max-width: 520px;
+    }
+    .bzm-phases {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .bzm-phases::before {
+      content: '';
+      position: absolute;
+      left: 80px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: rgba(244,241,236,0.18);
+    }
+    .bzm-phase {
+      display: grid;
+      grid-template-columns: 80px 1fr 200px;
+      gap: 48px;
+      padding: 32px 0;
+      align-items: start;
+      position: relative;
+    }
+    .bzm-phase::before {
+      content: '';
+      position: absolute;
+      left: 76px;
+      top: 44px;
+      width: 9px;
+      height: 9px;
+      background: var(--bzm-rust);
+      border-radius: 50%;
+    }
+    .bzm-phase-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: rgba(244,241,236,0.6);
+      padding-top: 12px;
+    }
+    .bzm-phase-content h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: -0.015em;
+      margin: 0 0 12px;
+      color: var(--bzm-paper);
+    }
+    .bzm-phase-content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(244,241,236,0.7);
+      margin: 0;
+      max-width: 480px;
+    }
+    .bzm-phase-duration {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      padding-top: 18px;
+      text-align: right;
+    }
+    .bzm-phase-duration strong {
+      display: block;
+      font-family: var(--bzm-display);
+      font-style: italic;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: var(--bzm-paper);
+      text-transform: none;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* ==========================================================
+       FAQ ACCORDION
+       ========================================================== */
+    .bzm-builds-faq {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-builds-faq-head {
+      max-width: 1400px;
+      margin: 0 auto 64px;
+    }
+    .bzm-builds-faq h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      max-width: 800px;
+    }
+    .bzm-builds-faq h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-faq-list {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .bzm-faq-item {
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-faq-item:last-child { border-bottom: 1px solid var(--bzm-line); }
+    .bzm-faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 28px 0;
+      display: grid;
+      grid-template-columns: 60px 1fr 40px;
+      gap: 24px;
+      align-items: center;
+      transition: color 0.25s ease;
+    }
+    .bzm-faq-item summary::-webkit-details-marker { display: none; }
+    .bzm-faq-item summary:hover { color: var(--bzm-rust); }
+    .bzm-faq-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--bzm-muted);
+    }
+    .bzm-faq-q {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(20px, 2.2vw, 26px);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .bzm-faq-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--bzm-ink);
+      border-radius: 50%;
+      position: relative;
+      transition: background 0.25s ease, border-color 0.25s ease;
+      justify-self: end;
+    }
+    .bzm-faq-icon::before,
+    .bzm-faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--bzm-ink);
+      transition: background 0.25s ease, transform 0.3s ease;
+    }
+    .bzm-faq-icon::before {
+      top: 50%; left: 7px; right: 7px; height: 1px; transform: translateY(-50%);
+    }
+    .bzm-faq-icon::after {
+      left: 50%; top: 7px; bottom: 7px; width: 1px; transform: translateX(-50%);
+    }
+    .bzm-faq-item[open] .bzm-faq-icon {
+      background: var(--bzm-rust);
+      border-color: var(--bzm-rust);
+    }
+    .bzm-faq-item[open] .bzm-faq-icon::before,
+    .bzm-faq-item[open] .bzm-faq-icon::after { background: var(--bzm-paper); }
+    .bzm-faq-item[open] .bzm-faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+    .bzm-faq-a {
+      padding: 0 0 32px 84px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--bzm-muted);
+      max-width: 800px;
+    }
+
+    /* ==========================================================
+       CTA
+       ========================================================== */
+    .bzm-builds-cta {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+      text-align: center;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-builds-cta h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin: 0 auto 24px;
+      max-width: 800px;
+    }
+    .bzm-builds-cta h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-builds-cta p {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .bzm-btn-primary {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 16px 28px;
+      border: none;
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .bzm-btn-primary:hover {
+      background: var(--bzm-rust);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       FOOTER (shared)
+       ========================================================== */
+    .bzm-footer {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+    }
+    .bzm-footer a {
+      color: var(--bzm-paper);
+      transition: color 0.25s ease;
+    }
+    .bzm-footer a:hover { color: var(--bzm-rust); }
+    .bzm-footer-news {
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding: 56px 6vw;
+    }
+    .bzm-footer-news-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .bzm-footer-news h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-news h3 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-footer-news-form {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding-bottom: 12px;
+    }
+    .bzm-footer-news-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+      font-size: 16px;
+      padding: 12px 0;
+      outline: none;
+    }
+    .bzm-footer-news-form input::placeholder { color: var(--bzm-muted-dark); }
+    .bzm-footer-news-form button {
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 12px 0 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover { color: var(--bzm-rust); }
+    .bzm-footer-news-form button::after {
+      content: '→';
+      font-size: 16px;
+      transition: transform 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover::after { transform: translateX(4px); }
+    .bzm-footer-main { padding: 96px 6vw 72px; }
+    .bzm-footer-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+      gap: 64px;
+    }
+    .bzm-footer-brand h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      margin: 0 0 24px;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-brand h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+      display: block;
+    }
+    .bzm-footer-brand p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--bzm-muted-dark);
+      max-width: 360px;
+      margin: 0 0 32px;
+    }
+    .bzm-footer-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .bzm-footer-badge {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border: 1px solid var(--bzm-line-dark-strong);
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-col h4 {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+    }
+    .bzm-footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .bzm-footer-col li { margin-bottom: 14px; font-size: 15px; }
+    .bzm-footer-col li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .bzm-footer-col li a:hover { gap: 14px; }
+    .bzm-footer-contact-line {
+      margin-bottom: 24px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .bzm-footer-contact-line .bzm-label {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+      margin-bottom: 6px;
+    }
+    .bzm-footer-phone {
+      font-family: var(--bzm-display);
+      font-size: 24px !important;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .bzm-footer-legal {
+      border-top: 1px solid var(--bzm-line-dark-strong);
+      padding: 24px 6vw;
+      margin-top: 56px;
+    }
+    .bzm-footer-legal-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+    }
+    .bzm-footer-legal-inner a { color: var(--bzm-muted-dark); }
+    .bzm-footer-legal-inner a:hover { color: var(--bzm-rust); }
+    .bzm-footer-legal-links { display: flex; gap: 24px; flex-wrap: wrap; }
+
+    /* ==========================================================
+       RESPONSIVE
+       ========================================================== */
+    @media (max-width: 1024px) {
+      .bzm-nav { gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 900px) {
+      .bzm-nav {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--bzm-paper);
+        border-bottom: 1px solid var(--bzm-line);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 6vw;
+        gap: 20px;
+        transform: translateY(-200%);
+        transition: transform 0.35s ease;
+        z-index: 999;
+      }
+      .bzm-nav.active { transform: translateY(0); }
+      .bzm-nav-dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 8px 0 8px 16px;
+        margin-top: 8px;
+        min-width: 0;
+        background: transparent;
+      }
+      .bzm-header-cta { display: none; }
+      .bzm-mobile-toggle { display: block; }
+
+      .bzm-builds-hero { height: clamp(440px, 70vh, 600px); }
+      .bzm-builds-hero-meta { gap: 16px 24px; }
+      .bzm-builds-intro { padding: 80px 6vw; }
+      .bzm-builds-intro-inner { grid-template-columns: 1fr; gap: 32px; }
+      .bzm-builds-included, .bzm-builds-types, .bzm-builds-timeline, .bzm-builds-faq, .bzm-builds-cta { padding: 80px 6vw; }
+      .bzm-builds-included-head, .bzm-builds-types-head, .bzm-builds-timeline-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; }
+      .bzm-spec-grid { grid-template-columns: 1fr; }
+      .bzm-spec-row {
+        padding: 20px 0 !important;
+        border-right: none !important;
+      }
+      .bzm-types-grid { grid-template-columns: 1fr; gap: 24px; }
+      .bzm-phases::before { left: 10px; }
+      .bzm-phase {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-left: 32px;
+      }
+      .bzm-phase::before { left: 6px; top: 16px; }
+      .bzm-phase-num, .bzm-phase-duration { padding-top: 0; text-align: left; }
+      .bzm-faq-item summary { grid-template-columns: 32px 1fr 28px; gap: 12px; }
+      .bzm-faq-a { padding-left: 44px; }
+
+      .bzm-footer-news-inner { grid-template-columns: 1fr; gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bzm-footer-main { padding: 72px 6vw 48px; }
+      .bzm-footer-news { padding: 40px 6vw; }
+      .bzm-footer-legal-inner { justify-content: flex-start; }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ==========================================================
+       HEADER
+       ========================================================== -->
+  <header class="bzm-header">
+    <div class="bzm-header-inner">
+
+      <a href="index.html" class="bzm-logo">
+        BZM <em>Enterprise</em>
+        <small>General Contractor — Edmonton, AB</small>
+      </a>
+
+      <nav class="bzm-nav" id="bzmNav">
+        <a href="index.html">Home</a>
+        <div class="bzm-nav-dropdown">
+          <a href="#" class="active">Services</a>
+          <div class="bzm-nav-dropdown-menu">
+            <a href="services-new-home-builds.html" class="active">New Home Builds</a>
+            <a href="services-renovations.html">Renovations</a>
+            <a href="services-leasehold-improvements.html">Leasehold Improvements</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="bzm-header-cta">Request a Quote</a>
+
+      <button class="bzm-mobile-toggle" id="bzmMobileToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- ==========================================================
+       HERO
+       ========================================================== -->
+  <section class="bzm-builds-hero">
+    <div class="bzm-builds-hero-img">
+      <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/builds-hero.jpeg" alt="Custom small home built by BZM Enterprise">
+    </div>
+    <div class="bzm-builds-hero-inner">
+      <div class="bzm-builds-hero-eyebrow">Services / 01 — New Home Builds</div>
+      <h1>Small custom homes,<br>built to <em>2,000 sq/ft.</em></h1>
+      <div class="bzm-builds-hero-meta">
+        <div><strong>Infill Builds</strong></div>
+        <div><strong>Garden Suites</strong></div>
+        <div><strong>Custom Plans</strong></div>
+        <div><strong>Edmonton &amp; Area</strong></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       INTRO
+       ========================================================== -->
+  <section class="bzm-builds-intro">
+    <div class="bzm-builds-intro-inner">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">01 —</span>The Approach</div>
+        <h2>Right-sized homes,<br>built <em>deliberately.</em></h2>
+      </div>
+      <div class="bzm-builds-intro-copy">
+        <p>BZM specializes in custom homes up to 2,000 square feet — a deliberate ceiling that lets us stay close to every detail without diluting our attention across mega-builds.</p>
+        <p>Whether you're building on an Edmonton infill lot, putting up a garden suite for family, or starting from scratch with a custom plan — <strong>the same crew is on your project from foundation to final walkthrough.</strong> No subcontractor shuffling, no telephone games, no surprises in the final invoice.</p>
+        <p>Every BZM build is engineered to current Alberta Building Code, fully permitted, and backed by a written workmanship warranty. The result: a home that's right-sized for the way you actually live.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       SPEC SHEET
+       ========================================================== -->
+  <section class="bzm-builds-included">
+
+    <div class="bzm-builds-included-head">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">02 —</span>What's Included</div>
+        <h2>End to end,<br>under <em>one roof.</em></h2>
+      </div>
+      <p class="bzm-builds-included-blurb">Every BZM build covers the full scope from site prep to final inspection. No mystery line items, no separate trades to chase down — one written contract, one team accountable.</p>
+    </div>
+
+    <div class="bzm-spec-grid">
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">01</div>
+        <div>
+          <h4>Permits &amp; Drawings</h4>
+          <p>Architectural drawings, engineered plans, and full City of Edmonton permitting handled by us.</p>
+        </div>
+      </div>
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">02</div>
+        <div>
+          <h4>Site Prep &amp; Excavation</h4>
+          <p>Lot preparation, excavation, grading, and foundation — done to spec, signed off by engineering.</p>
+        </div>
+      </div>
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">03</div>
+        <div>
+          <h4>Framing &amp; Structure</h4>
+          <p>Full framing, sheathing, roof structure, and exterior weatherproofing to Alberta Building Code.</p>
+        </div>
+      </div>
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">04</div>
+        <div>
+          <h4>Mechanical Trades</h4>
+          <p>Plumbing, electrical, HVAC, and gas — installed by licensed trades we've worked with for years.</p>
+        </div>
+      </div>
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">05</div>
+        <div>
+          <h4>Insulation &amp; Drywall</h4>
+          <p>Spray foam or batt to your spec, vapor barrier, and Level 4 drywall finish ready for paint.</p>
+        </div>
+      </div>
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">06</div>
+        <div>
+          <h4>Interior Finishes</h4>
+          <p>Flooring, cabinetry, millwork, tile, paint, fixtures — your selections, our installation.</p>
+        </div>
+      </div>
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">07</div>
+        <div>
+          <h4>Exterior Finishes</h4>
+          <p>Siding, windows, soffit, fascia, eaves, exterior doors, and front entry — all weather-tight.</p>
+        </div>
+      </div>
+
+      <div class="bzm-spec-row">
+        <div class="bzm-spec-num">08</div>
+        <div>
+          <h4>Final Inspection &amp; Warranty</h4>
+          <p>Final municipal inspection, occupancy permit, and a written workmanship warranty in your hand.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       BUILD TYPES
+       ========================================================== -->
+  <section class="bzm-builds-types">
+
+    <div class="bzm-builds-types-head">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">03 —</span>Build Types</div>
+        <h2>Four ways<br>we <em>build small.</em></h2>
+      </div>
+      <p class="bzm-builds-types-blurb">Each type fits a different lot, budget, and goal. Whichever you're after, we'll walk you through what's possible on your specific property before you commit.</p>
+    </div>
+
+    <div class="bzm-types-grid">
+
+      <div class="bzm-type-card">
+        <div class="bzm-type-img">
+          <span class="bzm-type-img-tag">01 / Infill</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/build-type-infill.jpeg" alt="Infill home build">
+        </div>
+        <div class="bzm-type-body">
+          <h3>Infill <em>Builds</em></h3>
+          <p>New homes on existing Edmonton lots — typically tear-down-and-rebuild or skinny lots. Maximize density without sacrificing livability.</p>
+          <div class="bzm-type-meta">
+            <span>Up to <strong>2,000 sq/ft</strong></span>
+            <span><strong>6 – 9 months</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bzm-type-card">
+        <div class="bzm-type-img">
+          <span class="bzm-type-img-tag">02 / Garden Suite</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/build-type-garden-suite.jpeg" alt="Garden suite build">
+        </div>
+        <div class="bzm-type-body">
+          <h3>Garden <em>Suites</em></h3>
+          <p>Detached secondary dwellings — perfect for aging parents, adult children, or rental income. Fully self-contained.</p>
+          <div class="bzm-type-meta">
+            <span>Up to <strong>900 sq/ft</strong></span>
+            <span><strong>4 – 6 months</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bzm-type-card">
+        <div class="bzm-type-img">
+          <span class="bzm-type-img-tag">03 / Custom Plan</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/build-type-custom.jpeg" alt="Custom home build">
+        </div>
+        <div class="bzm-type-body">
+          <h3>Custom <em>Plans</em></h3>
+          <p>You bring the vision — or a sketch on a napkin — and we build it. Architectural drawings, engineering, and construction in-house.</p>
+          <div class="bzm-type-meta">
+            <span>Up to <strong>2,000 sq/ft</strong></span>
+            <span><strong>7 – 10 months</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bzm-type-card">
+        <div class="bzm-type-img">
+          <span class="bzm-type-img-tag">04 / Starter Home</span>
+          <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/build-type-starter.jpeg" alt="Starter home build">
+        </div>
+        <div class="bzm-type-body">
+          <h3>Starter <em>Homes</em></h3>
+          <p>Smart, efficient floor plans designed to get a first-time owner into a quality build without overpaying for square footage.</p>
+          <div class="bzm-type-meta">
+            <span>Up to <strong>1,500 sq/ft</strong></span>
+            <span><strong>5 – 7 months</strong></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       TIMELINE
+       ========================================================== -->
+  <section class="bzm-builds-timeline">
+
+    <div class="bzm-builds-timeline-head">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">04 —</span>The Timeline</div>
+        <h2>Five phases,<br>one <em>build.</em></h2>
+      </div>
+      <p class="bzm-builds-timeline-blurb">A typical BZM small home runs six to nine months from contract to keys. Here's what each phase looks like — and how long it should take.</p>
+    </div>
+
+    <div class="bzm-phases">
+
+      <div class="bzm-phase">
+        <div class="bzm-phase-num">Phase 01</div>
+        <div class="bzm-phase-content">
+          <h3>Design &amp; Permitting</h3>
+          <p>Drawings, engineering, finish selections, and full permit submission to the City of Edmonton. We walk you through every decision before construction starts.</p>
+        </div>
+        <div class="bzm-phase-duration">Duration<strong>6 – 10 weeks</strong></div>
+      </div>
+
+      <div class="bzm-phase">
+        <div class="bzm-phase-num">Phase 02</div>
+        <div class="bzm-phase-content">
+          <h3>Site Prep &amp; Foundation</h3>
+          <p>Excavation, grading, footings, foundation walls, and weeping tile. Engineered, inspected, and signed off before framing begins.</p>
+        </div>
+        <div class="bzm-phase-duration">Duration<strong>3 – 4 weeks</strong></div>
+      </div>
+
+      <div class="bzm-phase">
+        <div class="bzm-phase-num">Phase 03</div>
+        <div class="bzm-phase-content">
+          <h3>Framing &amp; Lock-Up</h3>
+          <p>Floor systems, walls, roof structure, sheathing, windows, exterior doors. The home goes weather-tight before interior work starts.</p>
+        </div>
+        <div class="bzm-phase-duration">Duration<strong>4 – 6 weeks</strong></div>
+      </div>
+
+      <div class="bzm-phase">
+        <div class="bzm-phase-num">Phase 04</div>
+        <div class="bzm-phase-content">
+          <h3>Mechanical &amp; Finishes</h3>
+          <p>Rough-in plumbing, electrical, HVAC, insulation, drywall, paint, flooring, cabinets, millwork, tile, fixtures. The longest phase — and the most rewarding.</p>
+        </div>
+        <div class="bzm-phase-duration">Duration<strong>10 – 14 weeks</strong></div>
+      </div>
+
+      <div class="bzm-phase">
+        <div class="bzm-phase-num">Phase 05</div>
+        <div class="bzm-phase-content">
+          <h3>Final Inspection &amp; Hand-Off</h3>
+          <p>Punch list, deficiency walk, final municipal inspection, occupancy permit, and key hand-off — with a written warranty in your hand.</p>
+        </div>
+        <div class="bzm-phase-duration">Duration<strong>1 – 2 weeks</strong></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       FAQ
+       ========================================================== -->
+  <section class="bzm-builds-faq">
+
+    <div class="bzm-builds-faq-head">
+      <div class="bzm-section-label"><span class="bzm-num">05 —</span>Common Questions</div>
+      <h2>What people<br>ask <em>before they build.</em></h2>
+    </div>
+
+    <div class="bzm-faq-list">
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 01</span>
+          <span class="bzm-faq-q">Why do you cap builds at 2,000 sq/ft?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">It's a deliberate choice. At our size, capping square footage means we can keep one team on every project, stay close to every detail, and never let a build slip into a "production" mode. If your dream home is bigger than 2,000 sq/ft, we'll happily refer you to a larger builder we trust.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 02</span>
+          <span class="bzm-faq-q">How is the price determined?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">After a free consultation and lot review, we provide a detailed line-item quote based on your floor plan, finish selections, and site conditions. The quote is fixed-price wherever possible, with clearly identified allowances for items still to be selected (lighting, tile, hardware, etc.).</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 03</span>
+          <span class="bzm-faq-q">Do you handle permits and drawings?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Yes — every BZM build includes architectural drawings, engineering, and full City of Edmonton permitting. You'll never need to chase paperwork at City Hall.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 04</span>
+          <span class="bzm-faq-q">What's the deposit structure?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Builds are typically structured as a series of progress draws tied to construction milestones (foundation, framing, lock-up, drywall, finishes, completion). The exact schedule is spelled out in your contract before any money changes hands.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 05</span>
+          <span class="bzm-faq-q">What warranty do you offer?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Every BZM build comes with a written workmanship warranty covering labour and installation. Specific coverage and duration are detailed in your contract — and we stand behind it. If something isn't right, we come back.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 06</span>
+          <span class="bzm-faq-q">Where do you build?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Greater Edmonton and surrounding communities — including St. Albert, Sherwood Park, Leduc, Spruce Grove, and the Edmonton metro area. If you're outside that range, ask us anyway — we'll let you know honestly whether it fits.</div>
+      </details>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       CTA
+       ========================================================== -->
+  <section class="bzm-builds-cta">
+    <h2>Got a lot,<br>a plan, or <em>just an idea?</em></h2>
+    <p>Let's walk through what's possible. Free consultation, honest answer, no commitment. Most replies within 24 hours.</p>
+    <a href="contact.html" class="bzm-btn-primary">Start a Build Conversation</a>
+  </section>
+
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="bzm-footer">
+
+    <section class="bzm-footer-news">
+      <div class="bzm-footer-news-inner">
+        <h3>Stay in the loop on <em>new builds &amp; projects.</em></h3>
+        <form class="bzm-footer-news-form" onsubmit="event.preventDefault(); alert('Thanks — we\'ll be in touch.');">
+          <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="bzm-footer-main">
+      <div class="bzm-footer-grid">
+
+        <div class="bzm-footer-brand">
+          <h2>BZM<br>Enterprise<em>Inc.</em></h2>
+          <p>Edmonton-based general contractor specializing in custom small homes up to 2,000 sq/ft, full-scale renovations, and commercial leasehold improvements.</p>
+          <div class="bzm-footer-badges">
+            <span class="bzm-footer-badge">Licensed</span>
+            <span class="bzm-footer-badge">Insured</span>
+            <span class="bzm-footer-badge">WCB Covered</span>
+          </div>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services-new-home-builds.html">New Home Builds</a></li>
+            <li><a href="services-renovations.html">Renovations</a></li>
+            <li><a href="services-leasehold-improvements.html">Leasehold Improvements</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About BZM</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Get in Touch</h4>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Call</span>
+            <a href="tel:" class="bzm-footer-phone">(000) 000-0000</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Email</span>
+            <a href="mailto:info@bzmenterprise.ca">info@bzmenterprise.ca</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Service Area</span>
+            <span>Edmonton &amp; surrounding<br>Alberta communities</span>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Hours</span>
+            <span>Mon – Fri  &nbsp; 8:00 – 6:00<br>Sat &nbsp; By appointment</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="bzm-footer-legal">
+      <div class="bzm-footer-legal-inner">
+        <div>© 2026 BZM Enterprise Inc. — All rights reserved.</div>
+        <div class="bzm-footer-legal-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ==========================================================
+       MOBILE NAV TOGGLE
+       ========================================================== -->
+  <script>
+    (function() {
+      const toggle = document.getElementById('bzmMobileToggle');
+      const nav = document.getElementById('bzmNav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function() {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('active');
+      });
+
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth < 900) {
+            toggle.classList.remove('active');
+            nav.classList.remove('active');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
