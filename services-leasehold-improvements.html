@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BZM Enterprise — Commercial leasehold improvements and tenant fit-ups in Edmonton. Retail, office, F&amp;B, fitness, medical, and service businesses. Typical 6-week turnaround.">
+  <meta name="keywords" content="leasehold improvements Edmonton, commercial fit-up Edmonton, tenant improvements Alberta, retail build-out, office fit-up Edmonton">
+  <meta name="author" content="BZM Enterprise Inc.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Leasehold Improvements — BZM Enterprise Edmonton">
+  <meta property="og:description" content="Commercial fit-ups and tenant improvements. Doors open on opening day. Critical-path schedules, full permitting, single project lead.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/leasehold-jobsite.jpeg">
+
+  <title>Leasehold Improvements — BZM Enterprise Inc. | Commercial Fit-Ups Edmonton</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       GLOBAL RESET + TOKENS
+       ========================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bzm-ink: #1a1d1a;
+      --bzm-paper: #f4f1ec;
+      --bzm-cream: #ebe5db;
+      --bzm-rust: #b5532a;
+      --bzm-rust-deep: #8a3d1c;
+      --bzm-line: #d6cfc2;
+      --bzm-line-dark: rgba(244, 241, 236, 0.14);
+      --bzm-line-dark-strong: rgba(244, 241, 236, 0.28);
+      --bzm-muted: #6b675f;
+      --bzm-muted-dark: #9a958c;
+      --bzm-display: 'Fraunces', 'Playfair Display', Georgia, serif;
+      --bzm-body: 'Inter Tight', 'Helvetica Neue', sans-serif;
+      --bzm-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--bzm-body);
+      background: var(--bzm-paper);
+      color: var(--bzm-ink);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ==========================================================
+       HEADER (shared)
+       ========================================================== */
+    .bzm-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bzm-paper);
+      border-bottom: 1px solid var(--bzm-line);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .bzm-header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .bzm-logo {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: -0.015em;
+      line-height: 1;
+      color: var(--bzm-ink);
+      flex-shrink: 0;
+    }
+    .bzm-logo em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-logo small {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+    .bzm-nav { display: flex; align-items: center; gap: 36px; }
+    .bzm-nav a {
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--bzm-ink);
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .bzm-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--bzm-rust);
+      transition: width 0.25s ease;
+    }
+    .bzm-nav a:hover { color: var(--bzm-rust); }
+    .bzm-nav a:hover::after { width: 100%; }
+    .bzm-nav a.active { color: var(--bzm-rust); }
+    .bzm-nav a.active::after { width: 100%; }
+    .bzm-nav-dropdown { position: relative; }
+    .bzm-nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: -16px;
+      background: var(--bzm-paper);
+      border: 1px solid var(--bzm-line);
+      padding: 12px 0;
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+    .bzm-nav-dropdown:hover .bzm-nav-dropdown-menu,
+    .bzm-nav-dropdown:focus-within .bzm-nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .bzm-nav-dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .bzm-nav-dropdown-menu a::after { display: none; }
+    .bzm-nav-dropdown-menu a.active { color: var(--bzm-rust); background: var(--bzm-cream); }
+    .bzm-nav-dropdown-menu a:hover { background: var(--bzm-cream); color: var(--bzm-rust); }
+    .bzm-nav-dropdown > a::before {
+      content: '+';
+      display: inline-block;
+      margin-right: 4px;
+      color: var(--bzm-rust);
+      transition: transform 0.25s ease;
+    }
+    .bzm-nav-dropdown:hover > a::before { transform: rotate(45deg); }
+    .bzm-header-cta {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 12px 22px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: background 0.25s ease, transform 0.25s ease;
+      border: none;
+    }
+    .bzm-header-cta:hover { background: var(--bzm-rust); transform: translateY(-1px); }
+    .bzm-mobile-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+      position: relative;
+      cursor: pointer;
+    }
+    .bzm-mobile-toggle span {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--bzm-ink);
+      transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+    }
+    .bzm-mobile-toggle span:nth-child(1) { top: 8px; }
+    .bzm-mobile-toggle span:nth-child(2) { top: 15px; }
+    .bzm-mobile-toggle span:nth-child(3) { top: 22px; }
+    .bzm-mobile-toggle.active span:nth-child(1) { top: 15px; transform: rotate(45deg); }
+    .bzm-mobile-toggle.active span:nth-child(2) { opacity: 0; }
+    .bzm-mobile-toggle.active span:nth-child(3) { top: 15px; transform: rotate(-45deg); }
+
+    /* ==========================================================
+       HERO — dark commercial
+       ========================================================== */
+    .bzm-lease-hero {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 96px 6vw 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bzm-lease-hero,
+    .bzm-lease-hero * { color: var(--bzm-paper); }
+    .bzm-lease-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent, rgba(181,83,42,0.08));
+      pointer-events: none;
+    }
+    .bzm-lease-hero-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 80px;
+      align-items: end;
+      position: relative;
+      z-index: 1;
+    }
+    .bzm-lease-eyebrow {
+      font-family: var(--bzm-mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bzm-lease-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--bzm-rust);
+    }
+    .bzm-lease-hero h1 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(48px, 7vw, 108px);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+      margin: 0 0 32px;
+      color: var(--bzm-paper);
+    }
+    .bzm-lease-hero h1 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+    }
+    .bzm-lease-hero-lede {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(244,241,236,0.85);
+      max-width: 480px;
+      margin: 0;
+    }
+    .bzm-lease-hero-lede strong { color: var(--bzm-paper); font-weight: 500; }
+    .bzm-lease-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .bzm-lease-hero-stat {
+      border-top: 1px solid rgba(244,241,236,0.28);
+      padding-top: 20px;
+    }
+    .bzm-lease-hero-stat-num {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(40px, 4.5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--bzm-paper);
+      margin-bottom: 8px;
+    }
+    .bzm-lease-hero-stat-num em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-size: 0.55em;
+      margin-left: 4px;
+      font-weight: 400;
+    }
+    .bzm-lease-hero-stat-label {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(244,241,236,0.65);
+    }
+
+    /* ==========================================================
+       TICKER
+       ========================================================== */
+    .bzm-lease-ticker {
+      background: var(--bzm-rust);
+      color: var(--bzm-paper);
+      padding: 18px 0;
+      overflow: hidden;
+    }
+    .bzm-lease-ticker-track {
+      display: flex;
+      gap: 56px;
+      white-space: nowrap;
+      animation: bzm-lease-scroll 35s linear infinite;
+      font-family: var(--bzm-display);
+      font-style: italic;
+      font-size: 22px;
+      font-weight: 400;
+    }
+    .bzm-lease-ticker-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 56px;
+    }
+    .bzm-lease-ticker-track span::after {
+      content: '◆';
+      color: rgba(244,241,236,0.7);
+      font-style: normal;
+      font-size: 11px;
+    }
+    @keyframes bzm-lease-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================
+       INTRO
+       ========================================================== */
+    .bzm-lease-intro {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-lease-intro-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-section-label .bzm-num { color: var(--bzm-muted); margin-right: 12px; }
+    .bzm-lease-intro h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(32px, 3.6vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .bzm-lease-intro h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-lease-intro-copy p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--bzm-ink);
+      margin: 0 0 24px;
+    }
+    .bzm-lease-intro-copy p:last-child { margin-bottom: 0; }
+    .bzm-lease-intro-copy p strong { font-weight: 600; }
+
+    /* ==========================================================
+       SECTORS GRID
+       ========================================================== */
+    .bzm-lease-sectors {
+      background: var(--bzm-cream);
+      padding: 120px 6vw;
+      border-top: 1px solid var(--bzm-line);
+      border-bottom: 1px solid var(--bzm-line);
+    }
+    .bzm-lease-sectors-head {
+      max-width: 1400px;
+      margin: 0 auto 64px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .bzm-lease-sectors-head h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .bzm-lease-sectors-head h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-lease-sectors-blurb {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+    .bzm-sectors-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--bzm-line);
+      border: 1px solid var(--bzm-line);
+    }
+    .bzm-sector {
+      background: var(--bzm-cream);
+      padding: 36px 32px 40px;
+      transition: background 0.3s ease;
+      position: relative;
+    }
+    .bzm-sector:hover { background: var(--bzm-paper); }
+    .bzm-sector-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--bzm-rust);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bzm-sector-num::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--bzm-line);
+      margin-left: 8px;
+    }
+    .bzm-sector h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 26px;
+      letter-spacing: -0.015em;
+      margin: 0 0 14px;
+      line-height: 1.1;
+    }
+    .bzm-sector h3 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-sector p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--bzm-muted);
+      margin: 0 0 20px;
+    }
+    .bzm-sector-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 16px;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-sector-tag {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      background: var(--bzm-paper);
+      color: var(--bzm-ink);
+      border: 1px solid var(--bzm-line);
+    }
+
+    /* ==========================================================
+       WHY BZM — differentiators
+       ========================================================== */
+    .bzm-lease-why {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-lease-why-head {
+      max-width: 1400px;
+      margin: 0 auto 64px;
+    }
+    .bzm-lease-why h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      max-width: 800px;
+    }
+    .bzm-lease-why h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-diffs {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      background: var(--bzm-line);
+    }
+    .bzm-diff {
+      background: var(--bzm-paper);
+      padding: 48px 36px 56px;
+      transition: background 0.3s ease;
+    }
+    .bzm-diff:hover { background: var(--bzm-cream); }
+    .bzm-diff-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--bzm-line);
+    }
+    .bzm-diff-num {
+      font-family: var(--bzm-display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 36px;
+      color: var(--bzm-rust);
+      line-height: 1;
+    }
+    .bzm-diff-tag {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted);
+    }
+    .bzm-diff h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: -0.015em;
+      margin: 0 0 14px;
+      line-height: 1.15;
+    }
+    .bzm-diff h3 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-diff p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--bzm-muted);
+      margin: 0;
+    }
+
+    /* ==========================================================
+       TURNAROUND TIMELINE (dark with bg image)
+       ========================================================== */
+    .bzm-lease-timeline {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 120px 6vw;
+      position: relative;
+      overflow: hidden;
+    }
+    .bzm-lease-timeline,
+    .bzm-lease-timeline * { color: var(--bzm-paper); }
+    .bzm-lease-timeline-img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 35%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.18;
+    }
+    .bzm-lease-timeline-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.5) contrast(1.05);
+    }
+    .bzm-lease-timeline-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--bzm-ink) 0%, transparent 100%);
+    }
+    .bzm-lease-timeline-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .bzm-lease-timeline-head {
+      margin-bottom: 80px;
+      max-width: 800px;
+    }
+    .bzm-lease-timeline .bzm-section-label {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+    }
+    .bzm-lease-timeline .bzm-section-label .bzm-num {
+      color: rgba(244,241,236,0.5);
+      margin-right: 12px;
+    }
+    .bzm-lease-timeline h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0 0 24px;
+      color: var(--bzm-paper);
+    }
+    .bzm-lease-timeline h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-lease-timeline-blurb {
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(244,241,236,0.7);
+      max-width: 540px;
+    }
+    .bzm-week-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(244,241,236,0.28);
+      border-bottom: 1px solid rgba(244,241,236,0.28);
+    }
+    .bzm-week {
+      padding: 32px 16px 32px 0;
+      border-right: 1px solid rgba(244,241,236,0.14);
+      position: relative;
+    }
+    .bzm-week:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+    .bzm-week-label {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bzm-week-label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--bzm-rust);
+      border-radius: 50%;
+    }
+    .bzm-week h4 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.005em;
+      margin: 0 0 10px;
+      color: var(--bzm-paper);
+    }
+    .bzm-week p {
+      font-size: 12px;
+      line-height: 1.55;
+      color: rgba(244,241,236,0.65);
+      margin: 0;
+    }
+
+    /* ==========================================================
+       DELIVERABLES
+       ========================================================== */
+    .bzm-lease-deliverables {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+    }
+    .bzm-lease-deliv-head {
+      max-width: 1400px;
+      margin: 0 auto 56px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .bzm-lease-deliv-head h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+    .bzm-lease-deliv-head h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-lease-deliv-blurb {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+    .bzm-deliv-list {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-deliv-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--bzm-line);
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .bzm-deliv-check {
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--bzm-rust);
+      background: var(--bzm-rust);
+      border-radius: 50%;
+      position: relative;
+      margin-top: 4px;
+    }
+    .bzm-deliv-check::after {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      color: var(--bzm-paper);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .bzm-deliv-item h4 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.005em;
+      margin: 0 0 4px;
+    }
+    .bzm-deliv-item p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--bzm-muted);
+      margin: 0;
+    }
+
+    /* ==========================================================
+       FAQ ACCORDION
+       ========================================================== */
+    .bzm-lease-faq {
+      padding: 120px 6vw;
+      background: var(--bzm-cream);
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-lease-faq-head {
+      max-width: 1400px;
+      margin: 0 auto 64px;
+    }
+    .bzm-lease-faq h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 4.4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      margin: 0;
+      max-width: 800px;
+    }
+    .bzm-lease-faq h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-faq-list {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .bzm-faq-item { border-top: 1px solid var(--bzm-line); }
+    .bzm-faq-item:last-child { border-bottom: 1px solid var(--bzm-line); }
+    .bzm-faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 28px 0;
+      display: grid;
+      grid-template-columns: 60px 1fr 40px;
+      gap: 24px;
+      align-items: center;
+      transition: color 0.25s ease;
+    }
+    .bzm-faq-item summary::-webkit-details-marker { display: none; }
+    .bzm-faq-item summary:hover { color: var(--bzm-rust); }
+    .bzm-faq-num {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--bzm-muted);
+    }
+    .bzm-faq-q {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(20px, 2.2vw, 26px);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .bzm-faq-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--bzm-ink);
+      border-radius: 50%;
+      position: relative;
+      transition: background 0.25s ease, border-color 0.25s ease;
+      justify-self: end;
+    }
+    .bzm-faq-icon::before,
+    .bzm-faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--bzm-ink);
+      transition: background 0.25s ease, transform 0.3s ease;
+    }
+    .bzm-faq-icon::before {
+      top: 50%; left: 7px; right: 7px; height: 1px; transform: translateY(-50%);
+    }
+    .bzm-faq-icon::after {
+      left: 50%; top: 7px; bottom: 7px; width: 1px; transform: translateX(-50%);
+    }
+    .bzm-faq-item[open] .bzm-faq-icon {
+      background: var(--bzm-rust);
+      border-color: var(--bzm-rust);
+    }
+    .bzm-faq-item[open] .bzm-faq-icon::before,
+    .bzm-faq-item[open] .bzm-faq-icon::after { background: var(--bzm-paper); }
+    .bzm-faq-item[open] .bzm-faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+    .bzm-faq-a {
+      padding: 0 0 32px 84px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--bzm-muted);
+      max-width: 800px;
+    }
+
+    /* ==========================================================
+       CTA
+       ========================================================== */
+    .bzm-lease-cta {
+      padding: 120px 6vw;
+      background: var(--bzm-paper);
+      text-align: center;
+      border-top: 1px solid var(--bzm-line);
+    }
+    .bzm-lease-cta h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin: 0 auto 24px;
+      max-width: 900px;
+    }
+    .bzm-lease-cta h2 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-lease-cta p {
+      font-size: 17px;
+      color: var(--bzm-muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .bzm-btn-primary {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      padding: 16px 28px;
+      border: none;
+      font-family: var(--bzm-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .bzm-btn-primary:hover {
+      background: var(--bzm-rust);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================
+       FOOTER (shared)
+       ========================================================== */
+    .bzm-footer {
+      background: var(--bzm-ink);
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+    }
+    .bzm-footer a { color: var(--bzm-paper); transition: color 0.25s ease; }
+    .bzm-footer a:hover { color: var(--bzm-rust); }
+    .bzm-footer-news {
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding: 56px 6vw;
+    }
+    .bzm-footer-news-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .bzm-footer-news h3 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-news h3 em { font-style: italic; color: var(--bzm-rust); font-weight: 400; }
+    .bzm-footer-news-form {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+      padding-bottom: 12px;
+    }
+    .bzm-footer-news-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-body);
+      font-size: 16px;
+      padding: 12px 0;
+      outline: none;
+    }
+    .bzm-footer-news-form input::placeholder { color: var(--bzm-muted-dark); }
+    .bzm-footer-news-form button {
+      background: transparent;
+      border: none;
+      color: var(--bzm-paper);
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 12px 0 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover { color: var(--bzm-rust); }
+    .bzm-footer-news-form button::after {
+      content: '→';
+      font-size: 16px;
+      transition: transform 0.25s ease;
+    }
+    .bzm-footer-news-form button:hover::after { transform: translateX(4px); }
+    .bzm-footer-main { padding: 96px 6vw 72px; }
+    .bzm-footer-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+      gap: 64px;
+    }
+    .bzm-footer-brand h2 {
+      font-family: var(--bzm-display);
+      font-weight: 500;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      margin: 0 0 24px;
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-brand h2 em {
+      font-style: italic;
+      color: var(--bzm-rust);
+      font-weight: 400;
+      display: block;
+    }
+    .bzm-footer-brand p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--bzm-muted-dark);
+      max-width: 360px;
+      margin: 0 0 32px;
+    }
+    .bzm-footer-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+    .bzm-footer-badge {
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border: 1px solid var(--bzm-line-dark-strong);
+      color: var(--bzm-paper);
+    }
+    .bzm-footer-col h4 {
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bzm-rust);
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--bzm-line-dark-strong);
+    }
+    .bzm-footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .bzm-footer-col li { margin-bottom: 14px; font-size: 15px; }
+    .bzm-footer-col li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .bzm-footer-col li a:hover { gap: 14px; }
+    .bzm-footer-contact-line { margin-bottom: 24px; font-size: 15px; line-height: 1.5; }
+    .bzm-footer-contact-line .bzm-label {
+      display: block;
+      font-family: var(--bzm-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+      margin-bottom: 6px;
+    }
+    .bzm-footer-phone {
+      font-family: var(--bzm-display);
+      font-size: 24px !important;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .bzm-footer-legal {
+      border-top: 1px solid var(--bzm-line-dark-strong);
+      padding: 24px 6vw;
+      margin-top: 56px;
+    }
+    .bzm-footer-legal-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: var(--bzm-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bzm-muted-dark);
+    }
+    .bzm-footer-legal-inner a { color: var(--bzm-muted-dark); }
+    .bzm-footer-legal-inner a:hover { color: var(--bzm-rust); }
+    .bzm-footer-legal-links { display: flex; gap: 24px; flex-wrap: wrap; }
+
+    /* ==========================================================
+       RESPONSIVE
+       ========================================================== */
+    @media (max-width: 1024px) {
+      .bzm-nav { gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 900px) {
+      .bzm-nav {
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: var(--bzm-paper);
+        border-bottom: 1px solid var(--bzm-line);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 6vw;
+        gap: 20px;
+        transform: translateY(-200%);
+        transition: transform 0.35s ease;
+        z-index: 999;
+      }
+      .bzm-nav.active { transform: translateY(0); }
+      .bzm-nav-dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 8px 0 8px 16px;
+        margin-top: 8px;
+        min-width: 0;
+        background: transparent;
+      }
+      .bzm-header-cta { display: none; }
+      .bzm-mobile-toggle { display: block; }
+
+      .bzm-lease-hero { padding: 64px 6vw 64px; }
+      .bzm-lease-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bzm-lease-hero-stats { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .bzm-lease-intro, .bzm-lease-sectors, .bzm-lease-why, .bzm-lease-timeline, .bzm-lease-deliverables, .bzm-lease-faq, .bzm-lease-cta { padding: 80px 6vw; }
+      .bzm-lease-intro-inner, .bzm-lease-sectors-head, .bzm-lease-deliv-head { grid-template-columns: 1fr; gap: 24px; }
+      .bzm-sectors-grid { grid-template-columns: 1fr; }
+      .bzm-diffs { grid-template-columns: 1fr; }
+      .bzm-lease-timeline-img { width: 100%; opacity: 0.1; }
+      .bzm-week-grid { grid-template-columns: 1fr; }
+      .bzm-week {
+        border-right: none;
+        border-bottom: 1px solid rgba(244,241,236,0.14);
+        padding: 24px 0;
+      }
+      .bzm-week:last-child { border-bottom: none; }
+      .bzm-deliv-list { grid-template-columns: 1fr; gap: 0; }
+      .bzm-faq-item summary { grid-template-columns: 32px 1fr 28px; gap: 12px; }
+      .bzm-faq-a { padding-left: 44px; }
+
+      .bzm-footer-news-inner { grid-template-columns: 1fr; gap: 24px; }
+      .bzm-footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bzm-footer-main { padding: 72px 6vw 48px; }
+      .bzm-footer-news { padding: 40px 6vw; }
+      .bzm-footer-legal-inner { justify-content: flex-start; }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- ==========================================================
+       HEADER
+       ========================================================== -->
+  <header class="bzm-header">
+    <div class="bzm-header-inner">
+
+      <a href="index.html" class="bzm-logo">
+        BZM <em>Enterprise</em>
+        <small>General Contractor — Edmonton, AB</small>
+      </a>
+
+      <nav class="bzm-nav" id="bzmNav">
+        <a href="index.html">Home</a>
+        <div class="bzm-nav-dropdown">
+          <a href="#" class="active">Services</a>
+          <div class="bzm-nav-dropdown-menu">
+            <a href="services-new-home-builds.html">New Home Builds</a>
+            <a href="services-renovations.html">Renovations</a>
+            <a href="services-leasehold-improvements.html" class="active">Leasehold Improvements</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="bzm-header-cta">Request a Quote</a>
+
+      <button class="bzm-mobile-toggle" id="bzmMobileToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- ==========================================================
+       HERO — dark commercial
+       ========================================================== -->
+  <section class="bzm-lease-hero">
+    <div class="bzm-lease-hero-grid">
+      <div>
+        <div class="bzm-lease-eyebrow">Services / 03 — Leasehold Improvements</div>
+        <h1>Doors open<br>on <em>opening day.</em></h1>
+        <p class="bzm-lease-hero-lede">Commercial build-outs and tenant fit-ups across Edmonton — <strong>delivered on the schedule your lease, your landlord, and your launch demand.</strong></p>
+      </div>
+      <div class="bzm-lease-hero-stats">
+        <div class="bzm-lease-hero-stat">
+          <div class="bzm-lease-hero-stat-num">6<em>wks</em></div>
+          <div class="bzm-lease-hero-stat-label">Typical Fit-Up Turnaround</div>
+        </div>
+        <div class="bzm-lease-hero-stat">
+          <div class="bzm-lease-hero-stat-num">100<em>%</em></div>
+          <div class="bzm-lease-hero-stat-label">Permitted &amp; Inspected</div>
+        </div>
+        <div class="bzm-lease-hero-stat">
+          <div class="bzm-lease-hero-stat-num">1<em>PM</em></div>
+          <div class="bzm-lease-hero-stat-label">Single Project Lead</div>
+        </div>
+        <div class="bzm-lease-hero-stat">
+          <div class="bzm-lease-hero-stat-num">24<em>hr</em></div>
+          <div class="bzm-lease-hero-stat-label">Quote Turnaround</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       TICKER
+       ========================================================== -->
+  <section class="bzm-lease-ticker">
+    <div class="bzm-lease-ticker-track">
+      <span>Retail Build-Outs</span>
+      <span>Office Fit-Ups</span>
+      <span>Restaurant &amp; Cafés</span>
+      <span>Fitness Studios</span>
+      <span>Medical &amp; Dental</span>
+      <span>Service Businesses</span>
+      <span>Tenant Improvements</span>
+      <span>Retail Build-Outs</span>
+      <span>Office Fit-Ups</span>
+      <span>Restaurant &amp; Cafés</span>
+      <span>Fitness Studios</span>
+      <span>Medical &amp; Dental</span>
+      <span>Service Businesses</span>
+      <span>Tenant Improvements</span>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       INTRO
+       ========================================================== -->
+  <section class="bzm-lease-intro">
+    <div class="bzm-lease-intro-inner">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">01 —</span>The Approach</div>
+        <h2>Built for businesses<br>on a <em>clock.</em></h2>
+      </div>
+      <div class="bzm-lease-intro-copy">
+        <p>Commercial tenants don't have the luxury of slow-rolled timelines. Lease commencement dates, landlord deadlines, equipment deliveries, and staff start dates all converge on the same calendar — and a missed week of construction can mean a missed month of revenue.</p>
+        <p>BZM specializes in <strong>tenant fit-ups and leasehold improvements that hit their dates.</strong> We coordinate with landlords, base-building managers, mechanical engineers, and trades — so you can stay focused on your launch instead of chasing contractors.</p>
+        <p>From a 1,200 sq/ft retail bay to a 5,000 sq/ft medical clinic, every BZM commercial build comes with a single project manager, a written critical-path schedule, and a clear scope you can hand to your landlord and your accountant.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       SECTORS GRID
+       ========================================================== -->
+  <section class="bzm-lease-sectors">
+
+    <div class="bzm-lease-sectors-head">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">02 —</span>Sectors We Serve</div>
+        <h2>Every commercial<br>tenant <em>has its own rules.</em></h2>
+      </div>
+      <p class="bzm-lease-sectors-blurb">Each sector comes with its own permitting nuances, mechanical requirements, and inspection demands. Here's where we work — and what we know about each.</p>
+    </div>
+
+    <div class="bzm-sectors-grid">
+
+      <div class="bzm-sector">
+        <div class="bzm-sector-num">01 / Retail</div>
+        <h3>Retail <em>Build-Outs</em></h3>
+        <p>Storefronts, boutiques, showrooms, and pop-ups. Open shells transformed into branded, code-compliant retail spaces ready for opening day.</p>
+        <div class="bzm-sector-tags">
+          <span class="bzm-sector-tag">Storefronts</span>
+          <span class="bzm-sector-tag">POS</span>
+          <span class="bzm-sector-tag">Lighting</span>
+        </div>
+      </div>
+
+      <div class="bzm-sector">
+        <div class="bzm-sector-num">02 / Office</div>
+        <h3>Office <em>Fit-Ups</em></h3>
+        <p>Open floor plans, private offices, meeting rooms, kitchenettes, and reception areas — designed for the way modern teams actually work.</p>
+        <div class="bzm-sector-tags">
+          <span class="bzm-sector-tag">Open Plan</span>
+          <span class="bzm-sector-tag">Glass Walls</span>
+          <span class="bzm-sector-tag">A/V Ready</span>
+        </div>
+      </div>
+
+      <div class="bzm-sector">
+        <div class="bzm-sector-num">03 / Food &amp; Beverage</div>
+        <h3>Restaurants <em>&amp; Cafés</em></h3>
+        <p>Commercial kitchens, hood systems, dining rooms, and bar build-outs. Health Authority, gas, and ventilation compliance handled.</p>
+        <div class="bzm-sector-tags">
+          <span class="bzm-sector-tag">Hood Systems</span>
+          <span class="bzm-sector-tag">Health Auth.</span>
+          <span class="bzm-sector-tag">Cold Storage</span>
+        </div>
+      </div>
+
+      <div class="bzm-sector">
+        <div class="bzm-sector-num">04 / Fitness</div>
+        <h3>Fitness <em>Studios</em></h3>
+        <p>Gyms, yoga and pilates studios, spin rooms, and martial arts spaces. Reinforced floors, mirror walls, sound treatment, and showers.</p>
+        <div class="bzm-sector-tags">
+          <span class="bzm-sector-tag">Sound Damping</span>
+          <span class="bzm-sector-tag">Showers</span>
+          <span class="bzm-sector-tag">Lockers</span>
+        </div>
+      </div>
+
+      <div class="bzm-sector">
+        <div class="bzm-sector-num">05 / Medical</div>
+        <h3>Medical <em>&amp; Dental</em></h3>
+        <p>Clinics, dental offices, physio, chiropractic, and specialty practices. Plumbing, sterilization, lead-lined rooms, and accessibility built in.</p>
+        <div class="bzm-sector-tags">
+          <span class="bzm-sector-tag">Treatment Rooms</span>
+          <span class="bzm-sector-tag">Sterilization</span>
+          <span class="bzm-sector-tag">Accessibility</span>
+        </div>
+      </div>
+
+      <div class="bzm-sector">
+        <div class="bzm-sector-num">06 / Service</div>
+        <h3>Service <em>Businesses</em></h3>
+        <p>Salons, spas, barber shops, repair shops, and professional offices. Plumbing-heavy fit-ups with the right ventilation and finishes.</p>
+        <div class="bzm-sector-tags">
+          <span class="bzm-sector-tag">Wash Stations</span>
+          <span class="bzm-sector-tag">Ventilation</span>
+          <span class="bzm-sector-tag">Reception</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       WHY BZM — differentiators
+       ========================================================== -->
+  <section class="bzm-lease-why">
+
+    <div class="bzm-lease-why-head">
+      <div class="bzm-section-label"><span class="bzm-num">03 —</span>Why Tenants Hire BZM</div>
+      <h2>Four reasons<br>commercial clients <em>come back.</em></h2>
+    </div>
+
+    <div class="bzm-diffs">
+
+      <div class="bzm-diff">
+        <div class="bzm-diff-head">
+          <div class="bzm-diff-num">01.</div>
+          <div class="bzm-diff-tag">— Schedule</div>
+        </div>
+        <h3>Critical-path <em>scheduling.</em></h3>
+        <p>Every commercial project gets a written week-by-week schedule with milestones, inspection dates, and dependency tracking. You'll always know what's happening, what's next, and what's at risk.</p>
+      </div>
+
+      <div class="bzm-diff">
+        <div class="bzm-diff-head">
+          <div class="bzm-diff-num">02.</div>
+          <div class="bzm-diff-tag">— Coordination</div>
+        </div>
+        <h3>Landlord-friendly <em>workflow.</em></h3>
+        <p>We coordinate with property managers, base-building engineers, and trade approvals — so your landlord stays informed without you having to be the messenger.</p>
+      </div>
+
+      <div class="bzm-diff">
+        <div class="bzm-diff-head">
+          <div class="bzm-diff-num">03.</div>
+          <div class="bzm-diff-tag">— Permits</div>
+        </div>
+        <h3>Permits, drawings, <em>inspections.</em></h3>
+        <p>Full-service handling of building permits, mechanical/electrical/plumbing approvals, occupancy permits, and Health Authority sign-offs where applicable. We pull it, schedule it, pass it.</p>
+      </div>
+
+      <div class="bzm-diff">
+        <div class="bzm-diff-head">
+          <div class="bzm-diff-num">04.</div>
+          <div class="bzm-diff-tag">— Accountability</div>
+        </div>
+        <h3>One project lead, <em>start to keys.</em></h3>
+        <p>You'll have one dedicated point of contact from the first walkthrough to the final inspection. No "I'll have to ask the team" — the person you're talking to is running your project.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       TURNAROUND TIMELINE
+       ========================================================== -->
+  <section class="bzm-lease-timeline">
+    <div class="bzm-lease-timeline-img">
+      <img src="https://raw.githubusercontent.com/FunctionFury/BZM_Enterprise_Inc/main/leasehold-jobsite.jpeg" alt="">
+    </div>
+    <div class="bzm-lease-timeline-inner">
+
+      <div class="bzm-lease-timeline-head">
+        <div class="bzm-section-label"><span class="bzm-num">04 —</span>The Turnaround</div>
+        <h2>Six weeks<br>from <em>walk-through to keys.</em></h2>
+        <p class="bzm-lease-timeline-blurb">A typical 1,500 – 3,000 sq/ft commercial fit-up takes about six weeks from the day we start on site. Here's what each week looks like — and what we're delivering.</p>
+      </div>
+
+      <div class="bzm-week-grid">
+
+        <div class="bzm-week">
+          <div class="bzm-week-label">Week 01</div>
+          <h4>Demo &amp; Layout</h4>
+          <p>Existing fit-out removed. New floor plan marked. Site secured and protected.</p>
+        </div>
+
+        <div class="bzm-week">
+          <div class="bzm-week-label">Week 02</div>
+          <h4>Rough-In</h4>
+          <p>Plumbing, electrical, HVAC rough-in. First-stage inspections scheduled.</p>
+        </div>
+
+        <div class="bzm-week">
+          <div class="bzm-week-label">Week 03</div>
+          <h4>Framing &amp; Drywall</h4>
+          <p>Walls framed, partitions in, drywall hung, mudded, sanded.</p>
+        </div>
+
+        <div class="bzm-week">
+          <div class="bzm-week-label">Week 04</div>
+          <h4>Finishes</h4>
+          <p>Paint, flooring, tile, ceiling tiles, doors, trim, millwork.</p>
+        </div>
+
+        <div class="bzm-week">
+          <div class="bzm-week-label">Week 05</div>
+          <h4>Mechanical Trim</h4>
+          <p>Lighting, plumbing fixtures, electrical devices, HVAC commissioning.</p>
+        </div>
+
+        <div class="bzm-week">
+          <div class="bzm-week-label">Week 06</div>
+          <h4>Final &amp; Hand-Off</h4>
+          <p>Final inspection, occupancy permit, deficiency punch, keys to tenant.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       DELIVERABLES
+       ========================================================== -->
+  <section class="bzm-lease-deliverables">
+
+    <div class="bzm-lease-deliv-head">
+      <div>
+        <div class="bzm-section-label"><span class="bzm-num">05 —</span>What You Get</div>
+        <h2>Every BZM commercial build<br>comes <em>with all of this.</em></h2>
+      </div>
+      <p class="bzm-lease-deliv-blurb">Not optional add-ons. Not premium tiers. Standard on every leasehold improvement we deliver.</p>
+    </div>
+
+    <div class="bzm-deliv-list">
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Written Critical-Path Schedule</h4>
+          <p>Week-by-week milestones from day one to occupancy.</p>
+        </div>
+      </div>
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Single Project Manager</h4>
+          <p>One contact from quote to keys. No handoffs, no telephone games.</p>
+        </div>
+      </div>
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Full Permitting &amp; Drawings</h4>
+          <p>Architectural, mechanical, electrical, plumbing — pulled, scheduled, passed.</p>
+        </div>
+      </div>
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Landlord Coordination</h4>
+          <p>Direct communication with property managers and base-building teams.</p>
+        </div>
+      </div>
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Weekly Status Updates</h4>
+          <p>Monday email summary: what shipped last week, what's happening this week, any risks.</p>
+        </div>
+      </div>
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Written Workmanship Warranty</h4>
+          <p>In your hand at hand-off. Covers labour and installation in writing.</p>
+        </div>
+      </div>
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Occupancy Permit Delivery</h4>
+          <p>We don't leave until the city says you can open the doors.</p>
+        </div>
+      </div>
+
+      <div class="bzm-deliv-item">
+        <div class="bzm-deliv-check"></div>
+        <div>
+          <h4>Closeout Document Package</h4>
+          <p>As-built drawings, warranties, manuals, and inspection certificates — bundled and handed over.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       FAQ
+       ========================================================== -->
+  <section class="bzm-lease-faq">
+
+    <div class="bzm-lease-faq-head">
+      <div class="bzm-section-label"><span class="bzm-num">06 —</span>Common Questions</div>
+      <h2>What tenants<br>ask <em>before they sign.</em></h2>
+    </div>
+
+    <div class="bzm-faq-list">
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 01</span>
+          <span class="bzm-faq-q">How fast can you start?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">From signed contract and approved permits, we can typically be on site within one to two weeks. The biggest variable is permit approval timeline at the City of Edmonton, which we manage end-to-end. If you're on a hard lease commencement date, tell us early — we'll back-plan from your deadline.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 02</span>
+          <span class="bzm-faq-q">Do you work with my landlord?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Yes, and we prefer it that way. We coordinate directly with property managers and base-building engineers on tenant improvement allowances (TIA), build-out scope approval, after-hours work coordination, and base-building utility tie-ins — so you don't have to be the middleman.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 03</span>
+          <span class="bzm-faq-q">Can you work with my architect or designer?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Of course. If you've already got architectural and engineered drawings, we'll quote and build to spec. If you haven't, we can connect you with commercial designers we've worked with for years — or work with whoever you've engaged.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 04</span>
+          <span class="bzm-faq-q">What about Tenant Improvement Allowance (TIA)?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">If your lease includes a TIA, we'll work with your landlord to align our scope and invoicing with how the TIA is structured — fixed allowance, reimbursement-based, or direct-pay. Our quotes are line-itemed so any TIA reconciliation is straightforward.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 05</span>
+          <span class="bzm-faq-q">Do you do after-hours or weekend work?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Yes — for retail centres, multi-tenant buildings, and tenant improvements where adjacent businesses need to keep operating, we can schedule overnight or weekend work. It costs more, but if your timeline or building rules require it, we make it happen.</div>
+      </details>
+
+      <details class="bzm-faq-item">
+        <summary>
+          <span class="bzm-faq-num">— 06</span>
+          <span class="bzm-faq-q">What size projects do you take on?</span>
+          <span class="bzm-faq-icon"></span>
+        </summary>
+        <div class="bzm-faq-a">Most BZM commercial fit-ups range from 1,000 to 5,000 square feet — though we've taken on smaller and larger. If you're not sure whether your project is a good fit, just ask. We'll be honest about whether we're the right team for the scope.</div>
+      </details>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       CTA
+       ========================================================== -->
+  <section class="bzm-lease-cta">
+    <h2>On a deadline?<br><em>Let's talk this week.</em></h2>
+    <p>Free walkthrough, written quote inside 24 hours, and a critical-path schedule before you sign. We don't waste tenants' time.</p>
+    <a href="contact.html" class="bzm-btn-primary">Request a Walkthrough</a>
+  </section>
+
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="bzm-footer">
+
+    <section class="bzm-footer-news">
+      <div class="bzm-footer-news-inner">
+        <h3>Stay in the loop on <em>new builds &amp; projects.</em></h3>
+        <form class="bzm-footer-news-form" onsubmit="event.preventDefault(); alert('Thanks — we\'ll be in touch.');">
+          <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="bzm-footer-main">
+      <div class="bzm-footer-grid">
+
+        <div class="bzm-footer-brand">
+          <h2>BZM<br>Enterprise<em>Inc.</em></h2>
+          <p>Edmonton-based general contractor specializing in custom small homes up to 2,000 sq/ft, full-scale renovations, and commercial leasehold improvements.</p>
+          <div class="bzm-footer-badges">
+            <span class="bzm-footer-badge">Licensed</span>
+            <span class="bzm-footer-badge">Insured</span>
+            <span class="bzm-footer-badge">WCB Covered</span>
+          </div>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services-new-home-builds.html">New Home Builds</a></li>
+            <li><a href="services-renovations.html">Renovations</a></li>
+            <li><a href="services-leasehold-improvements.html">Leasehold Improvements</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About BZM</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="bzm-footer-col">
+          <h4>Get in Touch</h4>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Call</span>
+            <a href="tel:" class="bzm-footer-phone">(000) 000-0000</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Email</span>
+            <a href="mailto:info@bzmenterprise.ca">info@bzmenterprise.ca</a>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Service Area</span>
+            <span>Edmonton &amp; surrounding<br>Alberta communities</span>
+          </div>
+
+          <div class="bzm-footer-contact-line">
+            <span class="bzm-label">Hours</span>
+            <span>Mon – Fri  &nbsp; 8:00 – 6:00<br>Sat &nbsp; By appointment</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="bzm-footer-legal">
+      <div class="bzm-footer-legal-inner">
+        <div>© 2026 BZM Enterprise Inc. — All rights reserved.</div>
+        <div class="bzm-footer-legal-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- ==========================================================
+       MOBILE NAV
+       ========================================================== -->
+  <script>
+    (function() {
+      const toggle = document.getElementById('bzmMobileToggle');
+      const nav = document.getElementById('bzmNav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function() {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('active');
+      });
+
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth < 900) {
+            toggle.classList.remove('active');
+            nav.classList.remove('active');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
